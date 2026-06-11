@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모바일 청첩장</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <style>
+        :root {
+            --bg-color: #F4F3F0;      /* 부드러운 베이지/오프화이트 */
+            --card-color: #EAE8E4;    /* 카드 배경 색상 */
+            --text-main: #2C2C2C;     /* 메인 텍스트 색상 */
+            --text-sub: #767676;      /* 서브 텍스트 색상 */
+            --accent-color: #8C8275;  /* 포인트 컬러 */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* 모바일 화면 고정 컨테이너 */
+        .mobile-container {
+            width: 100%;
+            max-width: 450px;
+            background-color: var(--bg-color);
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            position: relative;
+            padding-bottom: 60px;
+        }
+
+        /* 상단 인트로 및 폰트 스타일 */
+        .serif-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+        }
+
+        /* 아치형 가로수 형태의 이미지 마스크 스타일 */
+        .arch-image-wrap {
+            width: 85%;
+            margin: 40px auto;
+            border-top-left-radius: 200px;
+            border-top-right-radius: 200px;
+            overflow: hidden;
+            aspect-ratio: 1 / 1.1;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+
+        .arch-image-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        /* 섹션 패딩 */
+        section {
+            padding: 60px 24px;
+            text-align: center;
+        }
+
+        .date-header {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            color: var(--text-sub);
+            margin-bottom: 10px;
+        }
+
+        .names-header {
+            font-size: 2.2rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .invitation-text {
+            font-size: 0.95rem;
+            color: var(--text-sub);
+            word-break: keep-all;
+            line-height: 2;
+            margin: 40px 20px;
+        }
+
+        /* 달력 스타일 */
+        .calendar-section {
+            background-color: #fff;
+            padding: 40px 20px;
+            border-radius: 24px;
+            width: 90%;
+            margin: 0 auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .calendar-title {
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+        }
+
+        .calendar-month {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        .day-label {
+            color: var(--text-sub);
+            font-weight: 500;
+            padding-bottom: 5px;
+        }
+
+        .day-number {
+            padding: 8px 0;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 예식일 하이라이트 동그라미 */
+        .day-number.wedding-day::after {
+            content: '';
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            border: 1px solid var(--text-main);
+            border-radius: 50%;
+            background-color: transparent;
+            z-index: 1;
+            animation: pulse 2s infinite;
+        }
+        
+        .day-number.wedding-day span {
+            position: relative;
+            z-index: 2;
+            font-weight: bold;
+        }
+
+        /* 버튼 스타일 */
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            border: 1px solid var(--text-main);
+            color: var(--text-main);
+            padding: 14px 40px;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-decoration: none;
+            border-radius: 50px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--text-main);
+            color: #fff;
+        }
+
+        /* 안내 문구 상자 */
+        .info-box {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            line-height: 1.8;
+            padding: 0 15px;
+            word-break: keep-all;
+        }
+
+        /* 하단 푸터 이미지 섹션 */
+        .footer-image-wrap {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+
+        .footer-image-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .footer-overlay-text {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            font-size: 1.5rem;
+            letter-spacing: 5px;
+            font-weight: 300;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* 애니메이션 키프레임 */
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mobile-container">
+        
+        <section style="padding-top: 80px;">
+            <div class="date-header serif-title" data-aos="fade-up" data-aos-duration="1000">14.09.2026</div>
+            <div class="names-header serif-title" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
+                ВЛАДЛЕН & ДИАНА
+            </div>
+            
+            <div class="arch-image-wrap" data-aos="zoom-in" data-aos-duration="1500">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600" alt="Wedding Couple">
+            </div>
+
+            <p class="invitation-text" data-aos="fade-up" data-aos-duration="1200">
+                Дорогие гости!<br>
+                Приглашаем отпраздновать самое важное событие в нашей жизни – день свадьбы.
+            </p>
+        </section>
+
+        <section style="padding-top: 20px;">
+            <div class="calendar-section" data-aos="fade-up" data-aos-duration="1200">
+                <div class="calendar-title serif-title">КОГДА?</div>
+                <div class="calendar-month">АВГУСТ</div>
+                
+                <div class="calendar-grid">
+                    <div class="day-label">ПН</div>
+                    <div class="day-label">ВТ</div>
+                    <div class="day-label">СР</div>
+                    <div class="day-label">ЧТ</div>
+                    <div class="day-label">ПТ</div>
+                    <div class="day-label">СБ</div>
+                    <div class="day-label">ВС</div>
+                    
+                    <div class="day-number">10</div>
+                    <div class="day-number">11</div>
+                    <div class="day-number">12</div>
+                    <div class="day-number">13</div>
+                    <div class="day-number wedding-day"><span>14</span></div>
+                    <div class="day-number">15</div>
+                    <div class="day-number">16</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div data-aos="fade-up" data-aos-duration="1000">
+                <div class="calendar-title serif-title" style="font-size: 1.3rem;">АНКЕТА ГОСТЯ</div>
+                <p class="info-box" style="margin-top: 15px;">
+                    Подтвердите ваше присутствие до 01.06.2026, чтобы мы могли лучше подготовиться к празднику
+                </p>
+                <a href="#" class="btn-outline">ПОДТВЕРДИТЬ</a>
+            </div>
+
+            <div class="arch-image-wrap" style="width: 70%; aspect-ratio: 1/1.2; margin-top: 60px;" data-aos="fade-up" data-aos-duration="1200">
+                <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=600" alt="Wedding Couple 2">
+            </div>
+
+            <div style="margin-top: 40px;" data-aos="fade-up" data-aos-duration="1000">
+                <p class="info-box" style="font-size: 0.85rem;">
+                    Если у вас возникнут вопросы, вы можете обратиться к нашему организатору:<br><br>
+                    <strong>Алина</strong><br>
+                    +7 999 445 30 10<br>
+                    @alina_barsh
+                </p>
+            </div>
+        </section>
+
+        <section style="padding-top: 20px;">
+            <div class="info-box" data-aos="fade-up" data-aos-duration="1000" style="text-align: justify; text-justify: inter-word;">
+                Для удобства гостей создан общий чат: там можно обсуждать подарки, дресс-код, сюрпризы и просто делиться хорошим настроением. Не стесняйтесь писать – мы хотим, чтобы каждый чувствовал себя спокойно и вовремя узнавал все детали.
+            </div>
+            <div data-aos="fade-up" data-aos-duration="1200" data-aos-delay="100">
+                <a href="#" class="btn-outline">ВСТУПИТЬ В ЧАТ</a>
+            </div>
+        </section>
+
+        <div class="footer-image-wrap" data-aos="fade-up" data-aos-duration="1500">
+            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600" alt="Bride Walking">
+            <div class="footer-overlay-text serif-title">ЖДЕМ ВСЕХ!</div>
+        </div>
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // 애니메이션 효과 초기화 설정 (스크롤 시 자연스럽게 등장하도록 세팅)
+        AOS.init({
+            duration: 1000, // 애니메이션 기본 지속 시간
+            once: true,      // 스크롤을 다시 올렸다가 내려도 한 번만 작동되게 설정
+            offset: 120,     // 스크롤 반응 기준 높이(px)
+        });
+    </script>
+</body>
+</html>
