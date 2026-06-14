@@ -119,7 +119,7 @@
       100% { opacity: 0; visibility: hidden; }
     }
 
-    /* 자연스러운 꽃잎 효과 */
+    /* 따뜻한 바람 느낌 꽃잎 */
     .petals {
       position: absolute;
       inset: 0;
@@ -129,60 +129,66 @@
     }
 
     .petals span {
-  position: absolute;
-  top: -30px;
-  width: 6px;
-  height: 9px;
-  background: rgba(255,255,255,0.92);
-  border-radius: 70% 30% 65% 35%;
-  opacity: 0;
-  filter: blur(0.2px);
-  animation-name: petalSoftFall;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
+      position: absolute;
+      top: -45px;
+      right: -30px;
+      width: 6px;
+      height: 9px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 70% 30% 65% 35%;
+      opacity: 0;
+      filter: blur(0.15px);
+      animation-name: petalWindFall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      will-change: transform, opacity;
+    }
 
-    .petals span:nth-child(1) { left: 8%; animation-duration: 12s; animation-delay: 6.8s; }
-    .petals span:nth-child(2) { left: 18%; animation-duration: 15s; animation-delay: 7.5s; }
-    .petals span:nth-child(3) { left: 28%; animation-duration: 13s; animation-delay: 8.2s; }
-    .petals span:nth-child(4) { left: 38%; animation-duration: 16s; animation-delay: 7.1s; }
-    .petals span:nth-child(5) { left: 52%; animation-duration: 14s; animation-delay: 8.8s; }
-    .petals span:nth-child(6) { left: 63%; animation-duration: 17s; animation-delay: 7.9s; }
-    .petals span:nth-child(7) { left: 74%; animation-duration: 13.5s; animation-delay: 9s; }
-    .petals span:nth-child(8) { left: 88%; animation-duration: 16.5s; animation-delay: 7.3s; }
-    .petals span:nth-child(9) { left: 12%; animation-duration: 18s; animation-delay: 10s; }
-    .petals span:nth-child(10) { left: 46%; animation-duration: 15.5s; animation-delay: 9.5s; }
-    .petals span:nth-child(11) { left: 67%; animation-duration: 14.5s; animation-delay: 10.3s; }
-    .petals span:nth-child(12) { left: 93%; animation-duration: 17.5s; animation-delay: 8.6s; }
+    .petals span:nth-child(1) { right: -5%;  animation-duration: 15s; animation-delay: 6.8s; }
+    .petals span:nth-child(2) { right: 5%;   animation-duration: 18s; animation-delay: 7.4s; }
+    .petals span:nth-child(3) { right: 12%;  animation-duration: 16s; animation-delay: 8.1s; }
+    .petals span:nth-child(4) { right: -8%;  animation-duration: 20s; animation-delay: 8.7s; }
+    .petals span:nth-child(5) { right: 18%;  animation-duration: 17s; animation-delay: 9.2s; }
+    .petals span:nth-child(6) { right: 2%;   animation-duration: 22s; animation-delay: 9.8s; }
+    .petals span:nth-child(7) { right: 25%;  animation-duration: 19s; animation-delay: 10.4s; }
+    .petals span:nth-child(8) { right: -12%; animation-duration: 21s; animation-delay: 11s; }
+    .petals span:nth-child(9) { right: 10%;  animation-duration: 18s; animation-delay: 11.5s; }
+    .petals span:nth-child(10){ right: 30%;  animation-duration: 23s; animation-delay: 12s; }
+    .petals span:nth-child(11){ right: -3%;  animation-duration: 20s; animation-delay: 12.6s; }
+    .petals span:nth-child(12){ right: 15%;  animation-duration: 24s; animation-delay: 13.2s; }
 
-    @keyframes petalSoftFall {
-  0% {
-    transform: translate3d(0, -40px, 0) rotate(0deg) scale(0.8);
-    opacity: 0;
-  }
+    @keyframes petalWindFall {
+      0% {
+        transform: translate3d(0, -70px, 0) rotate(0deg) scale(0.8);
+        opacity: 0;
+      }
 
-  8% {
-    opacity: 0.9;
-  }
+      8% {
+        opacity: 0.85;
+      }
 
-  25% {
-    transform: translate3d(-12px, 160px, 0) rotate(90deg) scale(0.95);
-  }
+      20% {
+        transform: translate3d(-45px, 120px, 0) rotate(80deg) scale(0.9);
+      }
 
-  50% {
-    transform: translate3d(18px, 340px, 0) rotate(180deg) scale(0.9);
-  }
+      40% {
+        transform: translate3d(-95px, 270px, 0) rotate(170deg) scale(1);
+      }
 
-  75% {
-    transform: translate3d(-10px, 520px, 0) rotate(270deg) scale(0.95);
-    opacity: 0.85;
-  }
+      60% {
+        transform: translate3d(-145px, 430px, 0) rotate(260deg) scale(0.9);
+      }
 
-  100% {
-    transform: translate3d(14px, 760px, 0) rotate(360deg) scale(0.85);
-    opacity: 0;
-  }
-}
+      80% {
+        transform: translate3d(-210px, 590px, 0) rotate(350deg) scale(0.95);
+        opacity: 0.75;
+      }
+
+      100% {
+        transform: translate3d(-280px, 780px, 0) rotate(460deg) scale(0.85);
+        opacity: 0;
+      }
+    }
 
     .main-text {
       position: absolute;
