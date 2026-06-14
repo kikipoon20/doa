@@ -6,11 +6,7 @@
   <title>모바일 청첩장</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       background: #f5f1ec;
@@ -26,10 +22,7 @@
       overflow: hidden;
     }
 
-    .section {
-      padding: 70px 28px;
-      text-align: center;
-    }
+    .section { padding: 70px 28px; text-align: center; }
 
     .main {
       min-height: 100vh;
@@ -47,23 +40,11 @@
       box-shadow: 0 15px 35px rgba(0,0,0,0.12);
     }
 
-    .date {
-      font-size: 14px;
-      letter-spacing: 2px;
-      color: #9b7b66;
-      margin-bottom: 12px;
-    }
+    .date { font-size: 14px; letter-spacing: 2px; color: #9b7b66; margin-bottom: 12px; }
 
-    h1 {
-      font-size: 28px;
-      font-weight: 400;
-      margin-bottom: 15px;
-    }
+    h1 { font-size: 28px; font-weight: 400; margin-bottom: 15px; }
 
-    .names {
-      font-size: 20px;
-      letter-spacing: 1px;
-    }
+    .names { font-size: 20px; letter-spacing: 1px; }
 
     .title {
       font-size: 18px;
@@ -72,10 +53,7 @@
       font-weight: 400;
     }
 
-    .text {
-      font-size: 15px;
-      color: #5f5149;
-    }
+    .text { font-size: 15px; color: #5f5149; }
 
     .parents {
       margin-top: 35px;
@@ -83,9 +61,7 @@
       color: #6b5b52;
     }
 
-    .calendar {
-      background: #f8f0e8;
-    }
+    .calendar { background: #f8f0e8; }
 
     .calendar-box {
       background: #fff;
@@ -94,10 +70,7 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.06);
     }
 
-    .calendar-title {
-      font-size: 20px;
-      margin-bottom: 20px;
-    }
+    .calendar-title { font-size: 20px; margin-bottom: 20px; }
 
     .days {
       display: grid;
@@ -106,14 +79,9 @@
       font-size: 13px;
     }
 
-    .days div {
-      padding: 4px 0;
-    }
+    .days div { padding: 4px 0; }
 
-    .day-name {
-      color: #b28b73;
-      font-weight: bold;
-    }
+    .day-name { color: #b28b73; font-weight: bold; }
 
     .dday {
       background: #b88b6a;
@@ -121,10 +89,7 @@
       border-radius: 50%;
     }
 
-    /* 갤러리 */
-    .gallery {
-      background: #fffaf6;
-    }
+    .gallery { background: #fffaf6; }
 
     .gallery-grid {
       display: grid;
@@ -142,7 +107,7 @@
       display: block;
     }
 
-    .gallery-grid img:nth-child(n+7) {
+    .gallery-grid img:nth-child(n+10) {
       display: none;
     }
 
@@ -173,9 +138,7 @@
       flex-direction: column;
     }
 
-    .gallery-modal.active {
-      display: flex;
-    }
+    .gallery-modal.active { display: flex; }
 
     .modal-img {
       width: 100%;
@@ -207,13 +170,8 @@
       z-index: 10000;
     }
 
-    .arrow.left {
-      left: 14px;
-    }
-
-    .arrow.right {
-      right: 14px;
-    }
+    .arrow.left { left: 14px; }
+    .arrow.right { right: 14px; }
 
     .photo-count {
       margin-top: 35px;
@@ -281,7 +239,6 @@
 
     <section class="main section">
       <img src="main.jpg" class="main-img" alt="메인사진" />
-
       <p class="date fade">2026. 10. 24 SAT 12:30 PM</p>
       <h1 class="fade">우리 결혼합니다</h1>
       <p class="names fade">변은수 ♥ 이도아</p>
@@ -336,6 +293,13 @@
         <img src="photo6.jpg" onclick="openGallery(5)" alt="갤러리사진6">
         <img src="photo7.jpg" onclick="openGallery(6)" alt="갤러리사진7">
         <img src="photo8.jpg" onclick="openGallery(7)" alt="갤러리사진8">
+        <img src="photo9.jpg" onclick="openGallery(8)" alt="갤러리사진9">
+        <img src="photo10.jpg" onclick="openGallery(9)" alt="갤러리사진10">
+        <img src="photo11.jpg" onclick="openGallery(10)" alt="갤러리사진11">
+        <img src="photo12.jpg" onclick="openGallery(11)" alt="갤러리사진12">
+        <img src="photo13.jpg" onclick="openGallery(12)" alt="갤러리사진13">
+        <img src="photo14.jpg" onclick="openGallery(13)" alt="갤러리사진14">
+        <img src="photo15.jpg" onclick="openGallery(14)" alt="갤러리사진15">
       </div>
 
       <button class="more-btn fade" id="moreBtn" onclick="showMorePhotos()">더보기</button>
@@ -380,7 +344,7 @@
     <button class="close-btn" onclick="closeGallery()">×</button>
     <button class="arrow left" onclick="prevPhoto()">‹</button>
     <img src="" class="modal-img" id="modalImg" alt="확대사진">
-    <div class="photo-count" id="photoCount">1 / 8</div>
+    <div class="photo-count" id="photoCount">1 / 15</div>
     <button class="arrow right" onclick="nextPhoto()">›</button>
   </div>
 
@@ -407,7 +371,14 @@
       "photo5.jpg",
       "photo6.jpg",
       "photo7.jpg",
-      "photo8.jpg"
+      "photo8.jpg",
+      "photo9.jpg",
+      "photo10.jpg",
+      "photo11.jpg",
+      "photo12.jpg",
+      "photo13.jpg",
+      "photo14.jpg",
+      "photo15.jpg"
     ];
 
     let currentIndex = 0;
