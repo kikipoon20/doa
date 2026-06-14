@@ -119,90 +119,6 @@
       100% { opacity: 0; visibility: hidden; }
     }
 
-    /* 따뜻한 바람 느낌 꽃잎 */
-    .petals {
-      position: absolute;
-      inset: 0;
-      z-index: 4;
-      pointer-events: none;
-      overflow: hidden;
-    }
-
-    .petals span {
-      position: absolute;
-      top: -45px;
-      right: -30px;
-      width: 7px;
-      height: 11px;
-      background: rgba(255,255,255,0.9);
-      border-radius: 70% 30% 65% 35%;
-      opacity: 0;
-      filter: blur(0.15px);
-      animation-name: petalWindFall;
-      animation-timing-function: linear;
-      animation-iteration-count: infinite;
-      will-change: transform, opacity;
-    }
-
-    .petals span:nth-child(1) { right: -5%; animation-duration: 15s; animation-delay: 6.8s; }
-    .petals span:nth-child(2) { right: 5%; animation-duration: 18s; animation-delay: 7.4s; }
-    .petals span:nth-child(3) { right: 12%; animation-duration: 16s; animation-delay: 8.1s; }
-    .petals span:nth-child(4) { right: -8%; animation-duration: 20s; animation-delay: 8.7s; }
-    .petals span:nth-child(5) { right: 18%; animation-duration: 17s; animation-delay: 9.2s; }
-    .petals span:nth-child(6) { right: 2%; animation-duration: 22s; animation-delay: 9.8s; }
-    .petals span:nth-child(7) { right: 25%; animation-duration: 19s; animation-delay: 10.4s; }
-    .petals span:nth-child(8) { right: -12%; animation-duration: 21s; animation-delay: 11s; }
-    .petals span:nth-child(9) { right: 10%; animation-duration: 18s; animation-delay: 11.5s; }
-    .petals span:nth-child(10) { right: 30%; animation-duration: 23s; animation-delay: 12s; }
-    .petals span:nth-child(11) { right: -3%; animation-duration: 20s; animation-delay: 12.6s; }
-    .petals span:nth-child(12) { right: 15%; animation-duration: 24s; animation-delay: 13.2s; }
-
-    .petals span:nth-child(13) { right: 22%; animation-duration: 18s; animation-delay: 7s; }
-    .petals span:nth-child(14) { right: -6%; animation-duration: 21s; animation-delay: 8s; }
-    .petals span:nth-child(15) { right: 14%; animation-duration: 16s; animation-delay: 9s; }
-    .petals span:nth-child(16) { right: 28%; animation-duration: 23s; animation-delay: 10s; }
-    .petals span:nth-child(17) { right: 8%; animation-duration: 19s; animation-delay: 11s; }
-    .petals span:nth-child(18) { right: -10%; animation-duration: 20s; animation-delay: 12s; }
-    .petals span:nth-child(19) { right: 30%; animation-duration: 24s; animation-delay: 13s; }
-    .petals span:nth-child(20) { right: 18%; animation-duration: 17s; animation-delay: 14s; }
-    .petals span:nth-child(21) { right: 5%; animation-duration: 22s; animation-delay: 15s; }
-    .petals span:nth-child(22) { right: 25%; animation-duration: 18s; animation-delay: 16s; }
-    .petals span:nth-child(23) { right: -2%; animation-duration: 21s; animation-delay: 17s; }
-    .petals span:nth-child(24) { right: 35%; animation-duration: 23s; animation-delay: 18s; }
-
-    @keyframes petalWindFall {
-      0% {
-        transform: translate3d(0, -70px, 0) rotate(0deg) scale(0.8);
-        opacity: 0;
-      }
-
-      8% {
-        opacity: 0.85;
-      }
-
-      20% {
-        transform: translate3d(-45px, 120px, 0) rotate(80deg) scale(0.9);
-      }
-
-      40% {
-        transform: translate3d(-95px, 270px, 0) rotate(170deg) scale(1);
-      }
-
-      60% {
-        transform: translate3d(-145px, 430px, 0) rotate(260deg) scale(0.9);
-      }
-
-      80% {
-        transform: translate3d(-210px, 590px, 0) rotate(350deg) scale(0.95);
-        opacity: 0.75;
-      }
-
-      100% {
-        transform: translate3d(-280px, 780px, 0) rotate(460deg) scale(0.85);
-        opacity: 0;
-      }
-    }
-
     .main-text {
       position: absolute;
       left: 0;
@@ -405,13 +321,111 @@
       color: #5f4030;
     }
 
-    .account {
-      background: #fff;
-      border: 1px solid #eadbd1;
-      padding: 18px;
-      border-radius: 14px;
+    /* 계좌번호 */
+    .account-wrap {
+      text-align: left;
+      margin-top: 10px;
+    }
+
+    .account-toggle {
+      width: 100%;
+      height: 39px;
+      padding: 0 18px;
       margin-top: 12px;
+      background: #fff;
+      border: 1px solid #d8d8d8;
+      border-radius: 5px;
+      color: #6d9198;
+      font-size: 15px;
+      font-family: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      cursor: pointer;
+    }
+
+    .account-toggle.bride {
+      color: #b4878c;
+    }
+
+    .account-toggle span {
+      font-size: 18px;
+      color: #999;
+    }
+
+    .account-list {
+      display: none;
+      background: #fff;
+      border: 1px solid #d8d8d8;
+      border-top: none;
+      border-radius: 0 0 5px 5px;
+      overflow: hidden;
+    }
+
+    .account-list.active {
+      display: block;
+    }
+
+    .account-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 14px 18px;
+      border-bottom: 1px solid #ddd;
       font-size: 14px;
+      color: #555;
+      line-height: 1.55;
+    }
+
+    .account-item:last-child {
+      border-bottom: none;
+    }
+
+    .account-name {
+      color: #6d9198;
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .account-list.bride-list .account-name {
+      color: #b4878c;
+    }
+
+    .account-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-left: 10px;
+    }
+
+    .copy-btn {
+      min-width: 68px;
+      padding: 4px 14px;
+      border: 1px solid #d2d2d2;
+      background: #fff;
+      border-radius: 4px;
+      font-size: 13px;
+      color: #555;
+      font-family: inherit;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+
+    .pay-btn {
+      min-width: 68px;
+      display: block;
+      background: #ffe812;
+      color: #111;
+      text-align: center;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 13px;
+      text-decoration: none;
+      font-weight: bold;
+      line-height: 1.3;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
     }
 
     .footer {
@@ -454,15 +468,6 @@
           Please join us<br>
           as we begin our new life together.
         </div>
-      </div>
-
-      <div class="petals">
-        <span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span>
       </div>
     </section>
 
@@ -543,16 +548,92 @@
     <section class="section">
       <h2 class="title fade">마음 전하실 곳</h2>
 
-      <div class="account fade">
-        신랑측 계좌<br>
-        국민은행 123456-00-123456<br>
-        최도현
-      </div>
+      <div class="account-wrap fade">
 
-      <div class="account fade">
-        신부측 계좌<br>
-        신한은행 987654-00-987654<br>
-        이하나
+        <button class="account-toggle groom" onclick="toggleAccount('groomAccount', this)">
+          신랑측 <span>⌄</span>
+        </button>
+
+        <div class="account-list" id="groomAccount">
+          <div class="account-item">
+            <div>
+              <div class="account-name">신랑</div>
+              1111-1111-1111-1111<br>
+              카카오뱅크 김도현
+            </div>
+            <div class="account-btns">
+              <button class="copy-btn" onclick="copyText('1111-1111-1111-1111')">복사</button>
+              <a href="#" class="pay-btn">● pay</a>
+            </div>
+          </div>
+
+          <div class="account-item">
+            <div>
+              <div class="account-name">신랑 아버지</div>
+              1111-1111-1111-1111<br>
+              카카오뱅크 김종혁
+            </div>
+            <div class="account-btns">
+              <button class="copy-btn" onclick="copyText('1111-1111-1111-1111')">복사</button>
+              <a href="#" class="pay-btn">● pay</a>
+            </div>
+          </div>
+
+          <div class="account-item">
+            <div>
+              <div class="account-name">신랑 어머니</div>
+              1111-1111-1111-1111<br>
+              카카오뱅크 최은혜
+            </div>
+            <div class="account-btns">
+              <button class="copy-btn" onclick="copyText('1111-1111-1111-1111')">복사</button>
+              <a href="#" class="pay-btn">● pay</a>
+            </div>
+          </div>
+        </div>
+
+        <button class="account-toggle bride" onclick="toggleAccount('brideAccount', this)">
+          신부측 <span>⌄</span>
+        </button>
+
+        <div class="account-list bride-list" id="brideAccount">
+          <div class="account-item">
+            <div>
+              <div class="account-name">신부</div>
+              2222-2222-2222-2222<br>
+              신한은행 이도아
+            </div>
+            <div class="account-btns">
+              <button class="copy-btn" onclick="copyText('2222-2222-2222-2222')">복사</button>
+              <a href="#" class="pay-btn">● pay</a>
+            </div>
+          </div>
+
+          <div class="account-item">
+            <div>
+              <div class="account-name">신부 아버지</div>
+              3333-3333-3333-3333<br>
+              국민은행 이철수
+            </div>
+            <div class="account-btns">
+              <button class="copy-btn" onclick="copyText('3333-3333-3333-3333')">복사</button>
+              <a href="#" class="pay-btn">● pay</a>
+            </div>
+          </div>
+
+          <div class="account-item">
+            <div>
+              <div class="account-name">신부 어머니</div>
+              4444-4444-4444-4444<br>
+              카카오뱅크 박미영
+            </div>
+            <div class="account-btns">
+              <button class="copy-btn" onclick="copyText('4444-4444-4444-4444')">복사</button>
+              <a href="#" class="pay-btn">● pay</a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -586,21 +667,9 @@
     fades.forEach(el => observer.observe(el));
 
     const photos = [
-      "photo1.jpg",
-      "photo2.jpg",
-      "photo3.jpg",
-      "photo4.jpg",
-      "photo5.jpg",
-      "photo6.jpg",
-      "photo7.jpg",
-      "photo8.jpg",
-      "photo9.jpg",
-      "photo10.jpg",
-      "photo11.jpg",
-      "photo12.jpg",
-      "photo13.jpg",
-      "photo14.jpg",
-      "photo15.jpg"
+      "photo1.jpg", "photo2.jpg", "photo3.jpg", "photo4.jpg", "photo5.jpg",
+      "photo6.jpg", "photo7.jpg", "photo8.jpg", "photo9.jpg", "photo10.jpg",
+      "photo11.jpg", "photo12.jpg", "photo13.jpg", "photo14.jpg", "photo15.jpg"
     ];
 
     let currentIndex = 0;
@@ -634,6 +703,25 @@
     function nextPhoto() {
       currentIndex = (currentIndex + 1) % photos.length;
       updateModal();
+    }
+
+    function toggleAccount(id, button) {
+      const accountBox = document.getElementById(id);
+      const arrow = button.querySelector("span");
+
+      accountBox.classList.toggle("active");
+
+      if (accountBox.classList.contains("active")) {
+        arrow.innerText = "⌃";
+      } else {
+        arrow.innerText = "⌄";
+      }
+    }
+
+    function copyText(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert("계좌번호가 복사되었습니다.");
+      });
     }
   </script>
 </body>
