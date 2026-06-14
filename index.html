@@ -68,37 +68,52 @@
       align-items: center;
       justify-content: center;
       animation: introFadeOut 1.2s ease forwards;
-      animation-delay: 6.2s;
+      animation-delay: 6.3s;
     }
 
-    .intro-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      width: 100%;
+    .intro-stage {
+      position: relative;
+      width: 330px;
+      height: 230px;
     }
 
-    .intro-line {
-      width: 72%;
-      max-width: 320px;
+    .intro-love {
+      position: absolute;
+      top: 35px;
+      left: 35px;
+      width: 260px;
       height: auto;
       opacity: 0;
       clip-path: inset(0 100% 0 0);
-    }
-
-    .line1 {
-      animation: writeLine 2s steps(45) forwards;
+      animation: writeLove 2.2s steps(60) forwards;
       animation-delay: 0.4s;
     }
 
-    .line2 {
-      animation: writeLine 2.2s steps(50) forwards;
-      animation-delay: 2.8s;
+    .intro-withyou {
+      position: absolute;
+      top: 105px;
+      left: 65px;
+      width: 220px;
+      height: auto;
+      opacity: 0;
+      clip-path: inset(0 100% 0 0);
+      animation: writeWithYou 2.2s steps(60) forwards;
+      animation-delay: 2.7s;
     }
 
-    @keyframes writeLine {
+    @keyframes writeLove {
+      0% {
+        opacity: 1;
+        clip-path: inset(0 100% 0 0);
+      }
+
+      100% {
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+      }
+    }
+
+    @keyframes writeWithYou {
       0% {
         opacity: 1;
         clip-path: inset(0 100% 0 0);
@@ -360,9 +375,9 @@
       <img src="main.jpg" class="main-img" alt="메인사진" />
 
       <div class="intro-dark">
-        <div class="intro-container">
-          <img src="love.svg" class="intro-line line1" alt="Love">
-          <img src="withyou.svg" class="intro-line line2" alt="with you">
+        <div class="intro-stage">
+          <img src="love.svg" class="intro-love" alt="Love">
+          <img src="withyou.svg" class="intro-withyou" alt="with you">
         </div>
       </div>
 
