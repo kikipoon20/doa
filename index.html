@@ -22,29 +22,91 @@
       overflow: hidden;
     }
 
-    .section { padding: 70px 28px; text-align: center; }
+    .section {
+      padding: 70px 28px;
+      text-align: center;
+    }
 
+    /* 메인화면 수정 */
     .main {
-      min-height: 100vh;
-      background: linear-gradient(#f7efe8, #fffaf6);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      position: relative;
+      height: 100vh;
+      min-height: 720px;
+      padding: 0;
+      overflow: hidden;
+      background: #000;
     }
 
     .main-img {
-      width: 82%;
-      border-radius: 200px 200px 20px 20px;
-      margin-bottom: 35px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
-    .date { font-size: 14px; letter-spacing: 2px; color: #9b7b66; margin-bottom: 12px; }
+    .main::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.08),
+        rgba(0,0,0,0.05) 45%,
+        rgba(0,0,0,0.42) 100%
+      );
+      z-index: 1;
+    }
 
-    h1 { font-size: 28px; font-weight: 400; margin-bottom: 15px; }
+    .main-text {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 42px;
+      z-index: 2;
+      color: #fff;
+      text-align: center;
+      padding: 0 20px;
+    }
 
-    .names { font-size: 20px; letter-spacing: 1px; }
+    .main-small {
+      font-size: 17px;
+      font-weight: 300;
+      letter-spacing: 0.5px;
+      line-height: 1.2;
+    }
+
+    .main-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 64px;
+      font-weight: 400;
+      line-height: 0.9;
+      margin: 5px 0 24px;
+      letter-spacing: -2px;
+    }
+
+    .main-sub {
+      font-size: 12px;
+      line-height: 1.4;
+      opacity: 0.9;
+    }
+
+    .date {
+      font-size: 14px;
+      letter-spacing: 2px;
+      color: #9b7b66;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 15px;
+    }
+
+    .names {
+      font-size: 20px;
+      letter-spacing: 1px;
+    }
 
     .title {
       font-size: 18px;
@@ -53,7 +115,10 @@
       font-weight: 400;
     }
 
-    .text { font-size: 15px; color: #5f5149; }
+    .text {
+      font-size: 15px;
+      color: #5f5149;
+    }
 
     .parents {
       margin-top: 35px;
@@ -61,7 +126,9 @@
       color: #6b5b52;
     }
 
-    .calendar { background: #f8f0e8; }
+    .calendar {
+      background: #f8f0e8;
+    }
 
     .calendar-box {
       background: #fff;
@@ -70,7 +137,10 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.06);
     }
 
-    .calendar-title { font-size: 20px; margin-bottom: 20px; }
+    .calendar-title {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
 
     .days {
       display: grid;
@@ -79,9 +149,14 @@
       font-size: 13px;
     }
 
-    .days div { padding: 4px 0; }
+    .days div {
+      padding: 4px 0;
+    }
 
-    .day-name { color: #b28b73; font-weight: bold; }
+    .day-name {
+      color: #b28b73;
+      font-weight: bold;
+    }
 
     .dday {
       background: #b88b6a;
@@ -89,7 +164,9 @@
       border-radius: 50%;
     }
 
-    .gallery { background: #fffaf6; }
+    .gallery {
+      background: #fffaf6;
+    }
 
     .gallery-grid {
       display: grid;
@@ -138,7 +215,9 @@
       flex-direction: column;
     }
 
-    .gallery-modal.active { display: flex; }
+    .gallery-modal.active {
+      display: flex;
+    }
 
     .modal-img {
       width: 100%;
@@ -237,11 +316,17 @@
 <body>
   <div class="wrap">
 
-    <section class="main section">
+    <section class="main">
       <img src="main.jpg" class="main-img" alt="메인사진" />
-      <p class="date fade">2026. 10. 24 SAT 12:30 PM</p>
-      <h1 class="fade">우리 결혼합니다</h1>
-      <p class="names fade">변은수 ♥ 이도아</p>
+
+      <div class="main-text fade">
+        <div class="main-small">We're getting</div>
+        <div class="main-title">Married</div>
+        <div class="main-sub">
+          Please join us<br>
+          as we begin our new life together
+        </div>
+      </div>
     </section>
 
     <section class="section">
@@ -285,21 +370,21 @@
       <h2 class="title fade">GALLERY</h2>
 
       <div class="gallery-grid fade" id="galleryGrid">
-        <img src="photo1.jpg" onclick="openGallery(0)" alt="갤러리사진1">
-        <img src="photo2.jpg" onclick="openGallery(1)" alt="갤러리사진2">
-        <img src="photo3.jpg" onclick="openGallery(2)" alt="갤러리사진3">
-        <img src="photo4.jpg" onclick="openGallery(3)" alt="갤러리사진4">
-        <img src="photo5.jpg" onclick="openGallery(4)" alt="갤러리사진5">
-        <img src="photo6.jpg" onclick="openGallery(5)" alt="갤러리사진6">
-        <img src="photo7.jpg" onclick="openGallery(6)" alt="갤러리사진7">
-        <img src="photo8.jpg" onclick="openGallery(7)" alt="갤러리사진8">
-        <img src="photo9.jpg" onclick="openGallery(8)" alt="갤러리사진9">
-        <img src="photo10.jpg" onclick="openGallery(9)" alt="갤러리사진10">
-        <img src="photo11.jpg" onclick="openGallery(10)" alt="갤러리사진11">
-        <img src="photo12.jpg" onclick="openGallery(11)" alt="갤러리사진12">
-        <img src="photo13.jpg" onclick="openGallery(12)" alt="갤러리사진13">
-        <img src="photo14.jpg" onclick="openGallery(13)" alt="갤러리사진14">
-        <img src="photo15.jpg" onclick="openGallery(14)" alt="갤러리사진15">
+        <img src="photo1.jpg" onclick="openGallery(0)">
+        <img src="photo2.jpg" onclick="openGallery(1)">
+        <img src="photo3.jpg" onclick="openGallery(2)">
+        <img src="photo4.jpg" onclick="openGallery(3)">
+        <img src="photo5.jpg" onclick="openGallery(4)">
+        <img src="photo6.jpg" onclick="openGallery(5)">
+        <img src="photo7.jpg" onclick="openGallery(6)">
+        <img src="photo8.jpg" onclick="openGallery(7)">
+        <img src="photo9.jpg" onclick="openGallery(8)">
+        <img src="photo10.jpg" onclick="openGallery(9)">
+        <img src="photo11.jpg" onclick="openGallery(10)">
+        <img src="photo12.jpg" onclick="openGallery(11)">
+        <img src="photo13.jpg" onclick="openGallery(12)">
+        <img src="photo14.jpg" onclick="openGallery(13)">
+        <img src="photo15.jpg" onclick="openGallery(14)">
       </div>
 
       <button class="more-btn fade" id="moreBtn" onclick="showMorePhotos()">더보기</button>
@@ -343,7 +428,7 @@
   <div class="gallery-modal" id="galleryModal">
     <button class="close-btn" onclick="closeGallery()">×</button>
     <button class="arrow left" onclick="prevPhoto()">‹</button>
-    <img src="" class="modal-img" id="modalImg" alt="확대사진">
+    <img src="" class="modal-img" id="modalImg">
     <div class="photo-count" id="photoCount">1 / 15</div>
     <button class="arrow right" onclick="nextPhoto()">›</button>
   </div>
