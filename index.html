@@ -69,6 +69,7 @@
       font-size: 18px;
       margin-bottom: 25px;
       color: #8b6b58;
+      font-weight: 400;
     }
 
     .text {
@@ -120,10 +121,104 @@
       border-radius: 50%;
     }
 
-    .gallery img {
+    /* 갤러리 */
+    .gallery {
+      background: #fffaf6;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+      max-width: 430px;
+      margin: 0 auto;
+    }
+
+    .gallery-grid img {
       width: 100%;
-      margin-bottom: 12px;
-      border-radius: 12px;
+      height: 125px;
+      object-fit: cover;
+      cursor: pointer;
+      display: block;
+    }
+
+    .gallery-grid img:nth-child(n+7) {
+      display: none;
+    }
+
+    .gallery-grid.show-all img {
+      display: block;
+    }
+
+    .more-btn {
+      margin-top: 25px;
+      padding: 10px 36px;
+      border: 1px solid #d6c1b1;
+      background: transparent;
+      color: #8b6b58;
+      border-radius: 30px;
+      font-size: 14px;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .gallery-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #fff;
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .gallery-modal.active {
+      display: flex;
+    }
+
+    .modal-img {
+      width: 100%;
+      max-width: 430px;
+      max-height: 75vh;
+      object-fit: contain;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      border: none;
+      background: none;
+      font-size: 36px;
+      color: #aaa;
+      cursor: pointer;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: none;
+      font-size: 38px;
+      color: #ddd;
+      cursor: pointer;
+      z-index: 10000;
+    }
+
+    .arrow.left {
+      left: 14px;
+    }
+
+    .arrow.right {
+      right: 14px;
+    }
+
+    .photo-count {
+      margin-top: 35px;
+      color: #aaa;
+      font-size: 13px;
     }
 
     .info-box {
@@ -165,6 +260,7 @@
       padding: 40px 20px;
       font-size: 13px;
       color: #9b7b66;
+      text-align: center;
     }
 
     .fade {
@@ -230,9 +326,19 @@
 
     <section class="section gallery">
       <h2 class="title fade">GALLERY</h2>
-      <img src="photo1.jpg" class="fade" />
-      <img src="photo2.jpg" class="fade" />
-      <img src="photo3.jpg" class="fade" />
+
+      <div class="gallery-grid fade" id="galleryGrid">
+        <img src="photo1.jpg" onclick="openGallery(0)" alt="갤러리사진1">
+        <img src="photo2.jpg" onclick="openGallery(1)" alt="갤러리사진2">
+        <img src="photo3.jpg" onclick="openGallery(2)" alt="갤러리사진3">
+        <img src="photo4.jpg" onclick="openGallery(3)" alt="갤러리사진4">
+        <img src="photo5.jpg" onclick="openGallery(4)" alt="갤러리사진5">
+        <img src="photo6.jpg" onclick="openGallery(5)" alt="갤러리사진6">
+        <img src="photo7.jpg" onclick="openGallery(6)" alt="갤러리사진7">
+        <img src="photo8.jpg" onclick="openGallery(7)" alt="갤러리사진8">
+      </div>
+
+      <button class="more-btn fade" id="moreBtn" onclick="showMorePhotos()">더보기</button>
     </section>
 
     <section class="section">
@@ -270,6 +376,14 @@
 
   </div>
 
+  <div class="gallery-modal" id="galleryModal">
+    <button class="close-btn" onclick="closeGallery()">×</button>
+    <button class="arrow left" onclick="prevPhoto()">‹</button>
+    <img src="" class="modal-img" id="modalImg" alt="확대사진">
+    <div class="photo-count" id="photoCount">1 / 8</div>
+    <button class="arrow right" onclick="nextPhoto()">›</button>
+  </div>
+
   <script>
     const fades = document.querySelectorAll('.fade');
 
@@ -284,6 +398,50 @@
     });
 
     fades.forEach(el => observer.observe(el));
+
+    const photos = [
+      "photo1.jpg",
+      "photo2.jpg",
+      "photo3.jpg",
+      "photo4.jpg",
+      "photo5.jpg",
+      "photo6.jpg",
+      "photo7.jpg",
+      "photo8.jpg"
+    ];
+
+    let currentIndex = 0;
+
+    function showMorePhotos() {
+      document.getElementById("galleryGrid").classList.add("show-all");
+      document.getElementById("moreBtn").style.display = "none";
+    }
+
+    function openGallery(index) {
+      currentIndex = index;
+      document.getElementById("galleryModal").classList.add("active");
+      updateModal();
+    }
+
+    function closeGallery() {
+      document.getElementById("galleryModal").classList.remove("active");
+    }
+
+    function updateModal() {
+      document.getElementById("modalImg").src = photos[currentIndex];
+      document.getElementById("photoCount").innerText =
+        `${currentIndex + 1} / ${photos.length}`;
+    }
+
+    function prevPhoto() {
+      currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+      updateModal();
+    }
+
+    function nextPhoto() {
+      currentIndex = (currentIndex + 1) % photos.length;
+      updateModal();
+    }
   </script>
 </body>
 </html>
