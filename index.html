@@ -59,7 +59,6 @@
       pointer-events: none;
     }
 
-    /* 첫 시작 어두운 화면 */
     .intro-dark {
       position: absolute;
       inset: 0;
@@ -69,21 +68,37 @@
       align-items: center;
       justify-content: center;
       animation: introFadeOut 1.2s ease forwards;
-      animation-delay: 4.5s;
+      animation-delay: 6.2s;
     }
 
-    /* SVG 글씨 이미지 */
-    .intro-handwriting {
-      width: 78%;
-      max-width: 330px;
+    .intro-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      width: 100%;
+    }
+
+    .intro-line {
+      width: 72%;
+      max-width: 320px;
       height: auto;
       opacity: 0;
       clip-path: inset(0 100% 0 0);
-      animation: handwritingImage 3.2s steps(50) forwards;
+    }
+
+    .line1 {
+      animation: writeLine 2s steps(45) forwards;
       animation-delay: 0.4s;
     }
 
-    @keyframes handwritingImage {
+    .line2 {
+      animation: writeLine 2.2s steps(50) forwards;
+      animation-delay: 2.8s;
+    }
+
+    @keyframes writeLine {
       0% {
         opacity: 1;
         clip-path: inset(0 100% 0 0);
@@ -345,7 +360,10 @@
       <img src="main.jpg" class="main-img" alt="메인사진" />
 
       <div class="intro-dark">
-        <img src="intro-text.svg" class="intro-handwriting" alt="인트로 글씨">
+        <div class="intro-container">
+          <img src="love.svg" class="intro-line line1" alt="Love">
+          <img src="withyou.svg" class="intro-line line2" alt="with you">
+        </div>
       </div>
 
       <div class="main-text fade">
