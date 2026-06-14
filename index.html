@@ -72,38 +72,37 @@
     }
 
     .intro-stage {
-  position: relative;
-  width: 380px;
-  height: 260px;
-  transform: translateY(-150px);
-}
+      position: relative;
+      width: 380px;
+      height: 260px;
+      transform: translateY(-150px);
+    }
+
     .intro-love {
-  position: absolute;
-  top: -50px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 370px;
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 370px;
+      height: auto;
+      opacity: 0;
+      clip-path: inset(0 100% 0 0);
+      animation: writeLove 2.2s steps(60) forwards;
+      animation-delay: 0.4s;
+    }
 
-  height: auto;
-  opacity: 0;
-  clip-path: inset(0 100% 0 0);
-  animation: writeLove 2.2s steps(60) forwards;
-  animation-delay: 0.4s;
-}
-
-.intro-withyou {
-  position: absolute;
-  top: -36px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 370px;
-
-  height: auto;
-  opacity: 0;
-  clip-path: inset(0 100% 0 0);
-  animation: writeWithYou 2.2s steps(60) forwards;
-  animation-delay: 2.7s;
-}
+    .intro-withyou {
+      position: absolute;
+      top: -36px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 370px;
+      height: auto;
+      opacity: 0;
+      clip-path: inset(0 100% 0 0);
+      animation: writeWithYou 2.2s steps(60) forwards;
+      animation-delay: 2.7s;
+    }
 
     @keyframes writeLove {
       0% {
@@ -138,6 +137,60 @@
       100% {
         opacity: 0;
         visibility: hidden;
+      }
+    }
+
+    /* 꽃잎 효과 */
+    .petals {
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .petals span {
+      position: absolute;
+      top: -40px;
+      width: 10px;
+      height: 16px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 80% 20% 70% 30%;
+      opacity: 0;
+      animation: petalFall 8s linear infinite;
+      animation-delay: 6.8s;
+    }
+
+    .petals span:nth-child(1) { left: 8%; animation-duration: 8s; animation-delay: 6.8s; }
+    .petals span:nth-child(2) { left: 18%; animation-duration: 10s; animation-delay: 7.2s; }
+    .petals span:nth-child(3) { left: 30%; animation-duration: 9s; animation-delay: 7s; }
+    .petals span:nth-child(4) { left: 42%; animation-duration: 11s; animation-delay: 7.5s; }
+    .petals span:nth-child(5) { left: 55%; animation-duration: 8.5s; animation-delay: 7.1s; }
+    .petals span:nth-child(6) { left: 68%; animation-duration: 10.5s; animation-delay: 7.4s; }
+    .petals span:nth-child(7) { left: 82%; animation-duration: 9.5s; animation-delay: 6.9s; }
+    .petals span:nth-child(8) { left: 92%; animation-duration: 12s; animation-delay: 7.8s; }
+    .petals span:nth-child(9) { left: 14%; animation-duration: 11s; animation-delay: 8.3s; }
+    .petals span:nth-child(10) { left: 48%; animation-duration: 9s; animation-delay: 8s; }
+    .petals span:nth-child(11) { left: 74%; animation-duration: 10s; animation-delay: 8.5s; }
+    .petals span:nth-child(12) { left: 88%; animation-duration: 8.7s; animation-delay: 8.1s; }
+
+    @keyframes petalFall {
+      0% {
+        transform: translateY(-40px) translateX(0) rotate(0deg);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      50% {
+        transform: translateY(280px) translateX(35px) rotate(180deg);
+      }
+
+      100% {
+        transform: translateY(620px) translateX(-30px) rotate(360deg);
+        opacity: 0.9;
       }
     }
 
@@ -392,6 +445,12 @@
           Please join us<br>
           as we begin our new life together.
         </div>
+      </div>
+
+      <div class="petals">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
       </div>
     </section>
 
