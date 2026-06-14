@@ -78,28 +78,32 @@
     }
 
     .intro-love {
-      position: absolute;
-      top: 35px;
-      left: 35px;
-      width: 260px;
-      height: auto;
-      opacity: 0;
-      clip-path: inset(0 100% 0 0);
-      animation: writeLove 2.2s steps(60) forwards;
-      animation-delay: 0.4s;
-    }
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 330px;
 
-    .intro-withyou {
-      position: absolute;
-      top: 105px;
-      left: 65px;
-      width: 220px;
-      height: auto;
-      opacity: 0;
-      clip-path: inset(0 100% 0 0);
-      animation: writeWithYou 2.2s steps(60) forwards;
-      animation-delay: 2.7s;
-    }
+  height: auto;
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+  animation: writeLove 2.2s steps(60) forwards;
+  animation-delay: 0.4s;
+}
+
+.intro-withyou {
+  position: absolute;
+  top: 75px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 290px;
+
+  height: auto;
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+  animation: writeWithYou 2.2s steps(60) forwards;
+  animation-delay: 2.7s;
+}
 
     @keyframes writeLove {
       0% {
