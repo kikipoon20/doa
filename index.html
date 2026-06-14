@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>모바일 청첩장</title>
 
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Serif+KR:wght@300;400;500&display=swap" rel="stylesheet">
+
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -27,11 +29,12 @@
       text-align: center;
     }
 
-    /* 메인화면 수정 */
+    /* 메인화면 */
     .main {
       position: relative;
-      height: 100vh;
-      min-height: 720px;
+      width: 100%;
+      aspect-ratio: 320 / 563;
+      min-height: auto;
       padding: 0;
       overflow: hidden;
       background: #000;
@@ -41,6 +44,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center top;
       display: block;
     }
 
@@ -50,62 +54,46 @@
       inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(0,0,0,0.08),
-        rgba(0,0,0,0.05) 45%,
-        rgba(0,0,0,0.42) 100%
+        rgba(0,0,0,0.03) 0%,
+        rgba(0,0,0,0.02) 45%,
+        rgba(0,0,0,0.28) 100%
       );
       z-index: 1;
+      pointer-events: none;
     }
 
     .main-text {
       position: absolute;
       left: 0;
       right: 0;
-      bottom: 42px;
+      bottom: 28px;
       z-index: 2;
       color: #fff;
       text-align: center;
       padding: 0 20px;
+      font-family: "Cormorant Garamond", serif;
     }
 
     .main-small {
-      font-size: 17px;
+      font-size: 29px;
       font-weight: 300;
-      letter-spacing: 0.5px;
-      line-height: 1.2;
+      line-height: 1;
+      letter-spacing: -0.5px;
     }
 
     .main-title {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 64px;
-      font-weight: 400;
-      line-height: 0.9;
-      margin: 5px 0 24px;
-      letter-spacing: -2px;
+      font-size: 76px;
+      font-weight: 300;
+      line-height: 0.78;
+      letter-spacing: -2.5px;
+      margin-bottom: 24px;
     }
 
     .main-sub {
-      font-size: 12px;
-      line-height: 1.4;
-      opacity: 0.9;
-    }
-
-    .date {
       font-size: 14px;
-      letter-spacing: 2px;
-      color: #9b7b66;
-      margin-bottom: 12px;
-    }
-
-    h1 {
-      font-size: 28px;
-      font-weight: 400;
-      margin-bottom: 15px;
-    }
-
-    .names {
-      font-size: 20px;
-      letter-spacing: 1px;
+      font-weight: 300;
+      line-height: 1.15;
+      opacity: 0.92;
     }
 
     .title {
@@ -126,9 +114,7 @@
       color: #6b5b52;
     }
 
-    .calendar {
-      background: #f8f0e8;
-    }
+    .calendar { background: #f8f0e8; }
 
     .calendar-box {
       background: #fff;
@@ -149,9 +135,7 @@
       font-size: 13px;
     }
 
-    .days div {
-      padding: 4px 0;
-    }
+    .days div { padding: 4px 0; }
 
     .day-name {
       color: #b28b73;
@@ -164,9 +148,7 @@
       border-radius: 50%;
     }
 
-    .gallery {
-      background: #fffaf6;
-    }
+    .gallery { background: #fffaf6; }
 
     .gallery-grid {
       display: grid;
@@ -215,9 +197,7 @@
       flex-direction: column;
     }
 
-    .gallery-modal.active {
-      display: flex;
-    }
+    .gallery-modal.active { display: flex; }
 
     .modal-img {
       width: 100%;
@@ -324,7 +304,7 @@
         <div class="main-title">Married</div>
         <div class="main-sub">
           Please join us<br>
-          as we begin our new life together
+          as we begin our new life together.
         </div>
       </div>
     </section>
