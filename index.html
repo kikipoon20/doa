@@ -230,6 +230,37 @@
       color: #6b5b52;
     }
 
+    .middle-slider {
+     background: #fffaf6;
+     padding: 0 0 60px;
+    }
+
+    .slider-box {
+     width: 100%;
+     overflow: hidden;
+    }
+
+    .slider-track {
+     display: flex;
+     overflow-x: auto;
+     scroll-snap-type: x mandatory;
+     -webkit-overflow-scrolling: touch;
+    }
+
+    .slider-track::-webkit-scrollbar {
+     display: none;
+    }
+
+    .slider-track img {
+     width: 100%;
+     height: 270px;
+     flex: 0 0 100%;
+     object-fit: cover;
+     object-position: center center;
+     display: block;
+     scroll-snap-align: start;
+    }
+
     .calendar { background: #f8f0e8; }
 
     .calendar-box {
@@ -571,6 +602,15 @@
       <div class="parents fade">
         변재봉 · 윤미자의 장남 변은수<br>
         이기수 · 유은희의 차녀 이도아
+      </div>
+    </section>
+
+    <section class="middle-slider fade">
+      <div class="slider-box">
+        <div class="slider-track">
+          <img src="middle1.jpg" alt="중간사진1">
+          <img src="middle2.jpg" alt="중간사진2">
+        </div>
       </div>
     </section>
 
