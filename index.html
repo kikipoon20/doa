@@ -806,6 +806,8 @@
     ];
 
     let currentIndex = 0;
+    let touchStartX = 0;
+    let touchEndX = 0;
 
     function showMorePhotos() {
       document.getElementById("galleryGrid").classList.add("show-all");
@@ -837,6 +839,31 @@
       currentIndex = (currentIndex + 1) % photos.length;
       updateModal();
     }
+ 
+    const galleryModal = document.getElementById("galleryModal");
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    galleryModal.addEventListener("touchstart", function(e) {
+     touchStartX = e.changedTouches[0].screenX;
+    });
+
+   galleryModal.addEventListener("touchend", function(e) {
+   touchEndX = e.changedTouches[0].screenX;
+
+   const swipeDistance = touchEndX - touchStartX;
+
+   if (swipeDistance > 50) {
+     prevPhoto();
+   }
+
+   if (swipeDistance < -50) {
+     nextPhoto();
+    }
+   });
+
+
 
     function toggleAccount(id, button) {
       const target = document.getElementById(id);
