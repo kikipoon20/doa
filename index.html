@@ -465,6 +465,47 @@
       font-weight: bold;
     }
 
+    .copy-toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      transform: translateX(-50%) translateY(20px);
+      width: calc(100% - 40px);
+      max-width: 390px;
+      background: #fff;
+      color: #333;
+      padding: 16px 18px;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      font-size: 14px;
+      z-index: 99999;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.35s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .copy-toast::before {
+      content: "✓";
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #222;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    .copy-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
     .footer {
       padding: 40px 20px;
       font-size: 13px;
@@ -590,7 +631,7 @@
 
     
       <a class="btn fade" href="https://map.kakao.com/?itemId=16237055&t_src=share&t_ch=copy_url&t_obj=place" target="_blank">카카오맵 보기</a>
-      <a class="btn light fade" href="https://map.naver.com/p/entry/place/1066557685?placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202606221858&locale=ko&svcName=map_pcv5" target="_blank">네이버지도 보기</a>
+      <a class="btn light fade" href="https://map.naver.com/p/entry/place/1066557685?placePath=/home?from=map&amp;fromPanelNum=1&amp;additionalHeight=76&amp;timestamp=202606221858&amp;locale=ko&amp;svcName=map_pcv5" target="_blank">네이버지도 보기</a>
     </section>
 
     <section class="section">
@@ -699,6 +740,10 @@
     <button class="arrow right" onclick="nextPhoto()">›</button>
   </div>
 
+  <div class="copy-toast" id="copyToast">
+    계좌번호가 복사되었습니다.
+  </div>
+
   <script>
     const fades = document.querySelectorAll('.fade');
 
@@ -767,8 +812,30 @@
     }
 
     function copyText(text) {
-      navigator.clipboard.writeText(text);
-      alert("계좌번호가 복사되었습니다.");
+      const toast = document.getElementById("copyToast");
+
+      function showCopyToast() {
+        toast.classList.add("show");
+
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 2000);
+      }
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(showCopyToast);
+      } else {
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.style.position = "fixed";
+        textarea.style.left = "-9999px";
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+        showCopyToast();
+      }
     }
   </script>
 </body>
