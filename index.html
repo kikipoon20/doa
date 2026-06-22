@@ -871,17 +871,40 @@
     }
   }
 
-  function copyText(text) {
-    navigator.clipboard.writeText(text).then(() => {
-      const toast = document.getElementById("copyToast");
+ function copyText(text) {
+  const toast = document.getElementById("copyToast");
 
-      if (toast) {
-        toast.classList.add("show");
+  function showCopyToast() {
+    if (!toast) return;
 
-        setTimeout(() => {
-          toast.classList.remove("show");
-        }, 2000);
-      }
+    toast.classList.add("show");
+
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 2000);
+  }
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(showCopyToast).catch(() => {
+      fallbackCopy(text);
+    });
+  } else {
+    fallbackCopy(text);
+  }
+
+  function fallbackCopy(value) {
+    const textarea = document.createElement("textarea");
+    textarea.value = value;
+    textarea.setAttribute("readonly", "");
+    textarea.style.position = "fixed";
+    textarea.style.left = "-9999px";
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
+    showCopyToast();
+  }
+}
     });
   }
 </script>
