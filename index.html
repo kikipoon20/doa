@@ -768,7 +768,7 @@
       z-index:10000000;
     }
 
-    
+     /*--엔딩이미지--*/
      .ending-photo{
       padding:15px 0 40px;
      }
@@ -778,6 +778,50 @@
       width:100%;
       height:auto;
      }
+
+    /*--퀵메뉴--*/
+    .floating-menu{
+     position:fixed;
+     right:16px;
+     bottom:85px;
+     display:flex;
+     flex-direction:column;
+     gap:10px;
+     z-index:999999;
+     opacity:0;
+     visibility:hidden;
+     transition:.35s;
+    }
+
+    .floating-menu.show{
+     opacity:1;
+     visibility:visible;
+    }
+
+   .float-btn{
+     width:48px;
+     height:48px;
+     border:none;
+     border-radius:50%;
+     background:rgba(255,255,255,.30);
+     backdrop-filter:blur(10px);
+     -webkit-backdrop-filter:blur(10px);
+     box-shadow:0 4px 12px rgba(0,0,0,.18);
+     display:flex;
+     justify-content:center;
+     align-items:center;
+     cursor:pointer;
+    }
+
+    .float-btn .material-symbols-rounded{
+     font-size:24px;
+     color:#ffffff;
+     font-variation-settings:
+     'FILL' 0,
+     'wght' 300,
+     'GRAD' 0,
+     'opsz' 24;
+    }
 
     
   </style>
@@ -1295,5 +1339,24 @@
   }
 
 </script>
+
+  <!--퀵메뉴/위로올라가는 이모티콘과 링크복사 이모티콘-->
+  <div class="floating-menu" id="floatingMenu">
+
+    <button class="float-btn" onclick="scrollToTop()">
+        <span class="material-symbols-rounded">
+            keyboard_arrow_up
+        </span>
+    </button>
+
+    <button class="float-btn" onclick="copyInvitationLink()">
+        <span class="material-symbols-rounded">
+            share
+        </span>
+    </button>
+
+</div>
+
+  
 </body>
 </html>
