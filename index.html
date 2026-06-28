@@ -128,16 +128,21 @@
       overflow: hidden;
     }
 
-    .petals span{
-    width:8px;
-    height:12px;
-    background:rgba(255,255,255,.92);
-    border-radius:75% 25% 70% 30%;
-    transform-origin:center center;
-    filter:blur(.2px);
-    will-change:transform;
-
-}
+    .petals span {
+      position: absolute;
+      top: -45px;
+      right: -30px;
+      width: 7px;
+      height: 11px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 70% 30% 65% 35%;
+      opacity: 0;
+      filter: blur(0.15px);
+      animation-name: petalWindFall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      will-change: transform, opacity;
+    }
 
     .petals span:nth-child(1) { right:-5%;  animation-duration:15s; animation-delay:0s; }
 .petals span:nth-child(2) { right:5%;   animation-duration:18s; animation-delay:1.0s; }
