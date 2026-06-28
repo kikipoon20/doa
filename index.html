@@ -721,6 +721,47 @@
     }
 
     
+
+    .parking-img{
+      cursor:pointer;
+    }
+
+    .parking-modal{
+      display:none;
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.92);
+      z-index:9999999;
+      justify-content:center;
+      align-items:center;
+      padding:18px;
+    }
+
+    .parking-modal.active{
+      display:flex;
+    }
+
+    .parking-modal-img{
+      width:100%;
+      max-width:900px;
+      max-height:90vh;
+      object-fit:contain;
+      border-radius:8px;
+    }
+
+    .parking-close{
+      position:absolute;
+      top:18px;
+      right:24px;
+      border:none;
+      background:none;
+      color:#fff;
+      font-size:42px;
+      line-height:1;
+      cursor:pointer;
+      z-index:10000000;
+    }
+
   </style>
 </head>
 
@@ -864,7 +905,8 @@
 
     <img src="parking.jpg"
          class="parking-img"
-         alt="주차장 이용안내">
+         alt="주차장 이용안내"
+         onclick="openParking()">
 
     <div class="parking-text">
 
@@ -1009,6 +1051,16 @@
   <div class="copy-toast" id="copyToast">
     계좌번호가 복사되었습니다.
   </div>
+
+  <div class="parking-modal" id="parkingModal" onclick="closeParking()">
+    <button class="parking-close" type="button" onclick="closeParking()">×</button>
+
+    <img src="parking.jpg"
+         class="parking-modal-img"
+         alt="주차장 이용안내 확대"
+         onclick="event.stopPropagation()">
+  </div>
+
 
  <script>
   const fades = document.querySelectorAll('.fade');
@@ -1201,6 +1253,21 @@
     playMusic();
     document.removeEventListener("click", firstPlay);
   });
+
+
+  function openParking(){
+    const parkingModal = document.getElementById("parkingModal");
+    if (parkingModal) {
+      parkingModal.classList.add("active");
+    }
+  }
+
+  function closeParking(){
+    const parkingModal = document.getElementById("parkingModal");
+    if (parkingModal) {
+      parkingModal.classList.remove("active");
+    }
+  }
 
 </script>
 </body>
