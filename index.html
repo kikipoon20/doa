@@ -1338,6 +1338,56 @@
     }
   }
 
+   
+   /*--퀵메뉴--*/
+   const invitationSection = document.querySelector(".section");
+
+window.addEventListener("scroll",()=>{
+
+    const menu=document.getElementById("floatingMenu");
+
+    if(window.scrollY>invitationSection.offsetTop-100){
+
+        menu.classList.add("show");
+
+    }else{
+
+        menu.classList.remove("show");
+
+    }
+
+});
+
+function scrollToTop(){
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+function copyInvitationLink(){
+
+    navigator.clipboard.writeText(window.location.href);
+
+    const toast=document.getElementById("copyToast");
+
+    toast.innerHTML="청첩장 링크가 복사되었습니다.";
+
+    toast.classList.add("show");
+
+    setTimeout(()=>{
+
+        toast.classList.remove("show");
+
+        toast.innerHTML="계좌번호가 복사되었습니다.";
+
+    },2000);
+
+}
+
+   
 </script>
 
   <!--퀵메뉴/위로올라가는 이모티콘과 링크복사 이모티콘-->
