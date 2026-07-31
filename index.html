@@ -1443,13 +1443,13 @@ function copyInvitationLink(){
 
    let cakeIndex = 0;
 
-   setInterval(() => {
+    setInterval(() => {
       cakeFrames[cakeIndex].classList.remove("active");
 
       cakeIndex = (cakeIndex + 1) % cakeFrames.length;
 
       cakeFrames[cakeIndex].classList.add("active");
-    }, 200);   // 3.0초
+    }, 5000);
 
    
 </script>
