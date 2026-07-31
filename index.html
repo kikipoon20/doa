@@ -327,7 +327,20 @@
     }
 
 
+    .cake-gallery{
+     display:flex;
+     gap:4px;                 /* 사진 사이 간격 */
+     width:calc(100% + 56px); /* 좌우 꽉 채우기 */
+     margin-left:-28px;
+     margin-bottom:40px;      /* GALLERY와 간격 */
+    }
 
+    .cake-gallery img{
+     width:33.333%;
+     aspect-ratio:1/1;        /* 정사각형 */
+     object-fit:cover;
+     display:block;
+    }
 
     
     .gallery { background: #fffaf6; }
@@ -959,6 +972,13 @@
       <img src="cake1.jpg" class="cake-frame active" alt="케이크1">
       <img src="cake2.jpg" class="cake-frame" alt="케이크2">
       <img src="cake3.jpg" class="cake-frame" alt="케이크3">
+    </section>
+
+    
+    <section class="cake-gallery fade">
+      <img src="cake1.jpg" alt="케이크 사진 1">
+      <img src="cake2.jpg" alt="케이크 사진 2">
+      <img src="cake3.jpg" alt="케이크 사진 3">
     </section>
 
     
