@@ -301,6 +301,35 @@
       border-radius: 50%;
     }
 
+    
+
+    .cake-video{
+     position:relative;
+     width:calc(100% + 56px);
+     margin-left:-28px;
+     aspect-ratio:3/4;
+     overflow:hidden;
+     }
+
+    .cake-frame{
+     position:absolute;
+     inset:0;
+     width:100%;
+     height:100%;
+     object-fit:cover;
+     object-position:center;
+     opacity:0;
+     transition:opacity .08s linear;
+    }
+
+    .cake-frame.active{
+     opacity:1;
+    }
+
+
+
+
+    
     .gallery { background: #fffaf6; }
 
     .gallery-grid {
@@ -925,6 +954,14 @@
       </div>
     </section>
 
+    
+    <section class="cake-video fade">
+      <img src="cake1.jpg" class="cake-frame active" alt="케이크1">
+      <img src="cake2.jpg" class="cake-frame" alt="케이크2">
+      <img src="cake3.jpg" class="cake-frame" alt="케이크3">
+    </section>
+
+    
     <section class="section gallery">
       <h2 class="title fade">GALLERY</h2>
 
@@ -1399,6 +1436,20 @@ function copyInvitationLink(){
     },2000);
 
 }
+
+
+   
+   const cakeFrames = document.querySelectorAll(".cake-frame");
+
+   let cakeIndex = 0;
+
+   setInterval(() => {
+      cakeFrames[cakeIndex].classList.remove("active");
+
+      cakeIndex = (cakeIndex + 1) % cakeFrames.length;
+
+      cakeFrames[cakeIndex].classList.add("active");
+    }, 200);   // 0.3초
 
    
 </script>
