@@ -330,7 +330,6 @@
     .cake-gallery{
      display:flex;
      width:100%;
-     gap:4px;
      margin:0;
      padding:0;
     }
@@ -338,8 +337,8 @@
     .cake-gallery img{
      flex:1;
      width:0;
-     height:150px;
-     object-fit:cover;
+     height:auto;          /* 높이 자동 */
+     object-fit:contain;   /* 사진 전체 보이기 */
      display:block;
     }
 
