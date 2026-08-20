@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<!-- 모바일 다크모드 강제 변환 방지 -->
-  <meta name="color-scheme" content="light">
+<!-- 모바일 라이트 테마 고정 -->
+  <meta name="color-scheme" content="only light">
   <meta name="supported-color-schemes" content="light">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: dark)">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <title>변은수♡이도아 결혼합니다.</title>
@@ -32,65 +33,40 @@
     }
 
     :root {
-      color-scheme: light only !important;
-      supported-color-schemes: light !important;
-      background: #ffffff !important;
+      color-scheme: only light !important;
+      background-color: #ffffff !important;
     }
 
-    html {
+    html,
+    body {
       width: 100%;
       min-height: 100%;
       margin: 0;
       padding: 0;
-      background: #ffffff !important;
       background-color: #ffffff !important;
-      color-scheme: light only !important;
+      color-scheme: only light !important;
       -webkit-text-size-adjust: 100%;
     }
 
     body {
-      position: relative;
-      width: 100%;
       min-height: 100vh;
-      margin: 0;
-      padding: 0;
-      background: #ffffff !important;
-      background-color: #ffffff !important;
       font-family: "Noto Serif KR", serif;
       color: #4a3b32 !important;
       line-height: 1.8;
-      color-scheme: light only !important;
       -webkit-font-smoothing: antialiased;
-      isolation: isolate;
-    }
-
-    /* 화면 뒤쪽에 흰색 고정 레이어를 깔아서
-       모바일 브라우저의 다크 배경 노출을 최대한 방지 */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      width: 100vw;
-      height: 100vh;
-      background: #ffffff !important;
-      background-color: #ffffff !important;
-      z-index: -2147483647;
-      pointer-events: none;
     }
 
     .wrap {
-      position: relative;
-      z-index: 0;
       width: 100%;
       max-width: 430px;
       min-height: 100vh;
       margin: 0 auto;
-      background: #ffffff !important;
       background-color: #ffffff !important;
       overflow: hidden;
     }
 
-    /* 청첩장 주요 영역은 모두 흰색 고정 */
+    /* 기본 콘텐츠 배경을 모두 흰색으로 고정 */
+    .wrap,
     .wrap > section,
     .section,
     .calendar,
@@ -99,26 +75,14 @@
     .ending-photo,
     .footer,
     .account-wrap {
-      background: #ffffff !important;
       background-color: #ffffff !important;
     }
 
-    /* 브라우저가 폼 요소까지 자동 다크 처리하지 못하게 방지 */
-    button,
-    input,
-    textarea,
-    select {
-      color-scheme: light only !important;
-      -webkit-appearance: none;
-      appearance: none;
-    }
-
-    /* OS가 다크모드여도 이 페이지는 라이트 테마 유지 */
+    /* OS 다크모드여도 페이지는 라이트 모드 유지 */
     @media (prefers-color-scheme: dark) {
       :root,
       html,
       body,
-      body::before,
       .wrap,
       .wrap > section,
       .section,
@@ -128,26 +92,17 @@
       .ending-photo,
       .footer,
       .account-wrap {
-        background: #ffffff !important;
         background-color: #ffffff !important;
-        color-scheme: light only !important;
+        color-scheme: only light !important;
       }
 
       body {
         color: #4a3b32 !important;
       }
 
-      .title {
-        color: #8b6b58 !important;
-      }
-
-      .text {
-        color: #5f5149 !important;
-      }
-
-      .parents {
-        color: #6b5b52 !important;
-      }
+      .title { color: #8b6b58 !important; }
+      .text { color: #5f5149 !important; }
+      .parents { color: #6b5b52 !important; }
 
       .calendar-box,
       .gallery-modal,
@@ -157,7 +112,6 @@
       .copy-btn,
       .copy-toast,
       .parking-text {
-        background: #ffffff !important;
         background-color: #ffffff !important;
       }
 
@@ -170,10 +124,18 @@
       }
     }
 
-    .section {
+    /* 폼 요소 자동 다크 스타일 방지 */
+    button,
+    input,
+    textarea,
+    select {
+      color-scheme: only light !important;
+    }
+
+.section {
       padding: 70px 28px;
       text-align: center;
-      background: #ffffff !important;
+      background-color: #ffffff !important;
     }
 
     .main {
@@ -418,7 +380,7 @@
     .calendar { background: #ffffff; }
 
     .calendar-box {
-      background: #fff;
+      background-color: #ffffff !important;
       padding: 25px;
       border-radius: 18px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.2);
@@ -515,7 +477,7 @@
       margin-top: 25px;
       padding: 10px 36px;
       border: 1px solid #d6c1b1;
-      background: transparent;
+      background-color: #ffffff;
       color: #8b6b58;
       border-radius: 30px;
       font-size: 14px;
@@ -527,7 +489,7 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: #fff;
+      background-color: #ffffff !important;
       z-index: 9999;
       align-items: center;
       justify-content: center;
@@ -612,7 +574,7 @@
       height: 44px;
       border: 1px solid #ddd;
       border-radius: 6px;
-      background: #fff;
+      background-color: #ffffff !important;
       padding: 0 18px;
       display: flex;
       justify-content: space-between;
@@ -633,7 +595,7 @@
       display: none;
       border: 1px solid #ddd;
       border-top: none;
-      background: #fff;
+      background-color: #ffffff !important;
       border-radius: 0 0 6px 6px;
       overflow: hidden;
     }
@@ -678,7 +640,7 @@
 
     .copy-btn {
       border: 1px solid #ddd;
-      background: #fff;
+      background-color: #ffffff !important;
       border-radius: 4px;
       padding: 4px 12px;
       cursor: pointer;
@@ -702,7 +664,7 @@
       transform: translateX(-50%) translateY(20px);
       width: calc(100% - 40px);
       max-width: 390px;
-      background: #fff;
+      background-color: #ffffff !important;
       color: #333;
       padding: 16px 18px;
       border-radius: 10px;
@@ -1040,42 +1002,29 @@
 
   <script id="forceLightTheme">
     (function () {
-      const WHITE = "#ffffff";
-
-      function applyLightTheme() {
-        document.documentElement.style.setProperty("background-color", WHITE, "important");
-        document.documentElement.style.setProperty("color-scheme", "light only", "important");
+      function forceLightTheme() {
+        document.documentElement.style.setProperty("background-color", "#ffffff", "important");
+        document.documentElement.style.setProperty("color-scheme", "only light", "important");
 
         if (document.body) {
-          document.body.style.setProperty("background-color", WHITE, "important");
-          document.body.style.setProperty("color-scheme", "light only", "important");
+          document.body.style.setProperty("background-color", "#ffffff", "important");
+          document.body.style.setProperty("color-scheme", "only light", "important");
         }
 
-        const selectors = [
-          ".wrap",
-          ".wrap > section",
-          ".section",
-          ".calendar",
-          ".gallery",
-          ".parking-guide",
-          ".ending-photo",
-          ".footer",
-          ".account-wrap"
-        ];
-
-        document.querySelectorAll(selectors.join(",")).forEach(function (el) {
-          el.style.setProperty("background-color", WHITE, "important");
+        document.querySelectorAll(
+          ".wrap, .wrap > section, .section, .calendar, .gallery, .parking-guide, .ending-photo, .footer, .account-wrap"
+        ).forEach(function (el) {
+          el.style.setProperty("background-color", "#ffffff", "important");
         });
       }
 
-      applyLightTheme();
-
       if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", applyLightTheme, { once: true });
+        document.addEventListener("DOMContentLoaded", forceLightTheme, { once: true });
+      } else {
+        forceLightTheme();
       }
 
-      window.addEventListener("pageshow", applyLightTheme);
-      window.addEventListener("orientationchange", applyLightTheme);
+      window.addEventListener("pageshow", forceLightTheme);
     })();
   </script>
 
