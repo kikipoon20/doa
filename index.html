@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- 다크모드에서도 흰색 배경 유지 -->
+<!-- 모바일 다크모드 강제 변환 방지 -->
   <meta name="color-scheme" content="light">
-  <meta name="theme-color" content="#ffffff">
   <meta name="supported-color-schemes" content="light">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  
-  <title>변은수♡이도아 결혼합니다.</title>
+<title>변은수♡이도아 결혼합니다.</title>
 
   <!-- 링크 미리보기 -->
   <meta property="og:title" content="변은수♡이도아 결혼합니다.">
@@ -33,84 +32,105 @@
     }
 
     :root {
-      color-scheme: only light;
-      supported-color-schemes: light;
-      background-color: #ffffff !important;
+      color-scheme: light only !important;
+      supported-color-schemes: light !important;
+      background: #ffffff !important;
     }
 
     html {
       width: 100%;
       min-height: 100%;
+      margin: 0;
+      padding: 0;
+      background: #ffffff !important;
       background-color: #ffffff !important;
-      color-scheme: only light !important;
+      color-scheme: light only !important;
       -webkit-text-size-adjust: 100%;
     }
 
     body {
+      position: relative;
       width: 100%;
       min-height: 100vh;
       margin: 0;
+      padding: 0;
+      background: #ffffff !important;
       background-color: #ffffff !important;
       font-family: "Noto Serif KR", serif;
       color: #4a3b32 !important;
       line-height: 1.8;
-      color-scheme: only light !important;
+      color-scheme: light only !important;
       -webkit-font-smoothing: antialiased;
+      isolation: isolate;
+    }
+
+    /* 화면 뒤쪽에 흰색 고정 레이어를 깔아서
+       모바일 브라우저의 다크 배경 노출을 최대한 방지 */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #ffffff !important;
+      background-color: #ffffff !important;
+      z-index: -2147483647;
+      pointer-events: none;
     }
 
     .wrap {
+      position: relative;
+      z-index: 0;
       width: 100%;
       max-width: 430px;
       min-height: 100vh;
       margin: 0 auto;
+      background: #ffffff !important;
       background-color: #ffffff !important;
       overflow: hidden;
     }
 
-    /* 모바일 다크모드에서도 페이지 전체를 흰색으로 고정 */
-    body,
-    .wrap,
-    section,
+    /* 청첩장 주요 영역은 모두 흰색 고정 */
+    .wrap > section,
     .section,
     .calendar,
     .gallery,
     .parking-guide,
-    .footer,
     .ending-photo,
+    .footer,
     .account-wrap {
+      background: #ffffff !important;
       background-color: #ffffff !important;
     }
 
-    input,
-    textarea,
-    select,
-    button {
-      color-scheme: only light !important;
-    }
-
+    /* 브라우저가 폼 요소까지 자동 다크 처리하지 못하게 방지 */
     button,
     input,
     textarea,
     select {
+      color-scheme: light only !important;
       -webkit-appearance: none;
       appearance: none;
     }
 
+    /* OS가 다크모드여도 이 페이지는 라이트 테마 유지 */
     @media (prefers-color-scheme: dark) {
       :root,
       html,
       body,
+      body::before,
       .wrap,
-      section,
+      .wrap > section,
       .section,
       .calendar,
       .gallery,
       .parking-guide,
-      .footer,
       .ending-photo,
+      .footer,
       .account-wrap {
+        background: #ffffff !important;
         background-color: #ffffff !important;
-        color-scheme: only light !important;
+        color-scheme: light only !important;
       }
 
       body {
@@ -133,9 +153,11 @@
       .gallery-modal,
       .account-toggle,
       .account-list,
+      .account-item,
       .copy-btn,
       .copy-toast,
       .parking-text {
+        background: #ffffff !important;
         background-color: #ffffff !important;
       }
 
@@ -151,6 +173,7 @@
     .section {
       padding: 70px 28px;
       text-align: center;
+      background: #ffffff !important;
     }
 
     .main {
@@ -492,7 +515,7 @@
       margin-top: 25px;
       padding: 10px 36px;
       border: 1px solid #d6c1b1;
-      background: #ffffff;
+      background: transparent;
       color: #8b6b58;
       border-radius: 30px;
       font-size: 14px;
@@ -1015,31 +1038,44 @@
     
   </style>
 
-  <script id="forceLightMode">
+  <script id="forceLightTheme">
     (function () {
-      const white = "#ffffff";
-      document.documentElement.style.backgroundColor = white;
-      document.documentElement.style.colorScheme = "only light";
+      const WHITE = "#ffffff";
 
-      function forceLight() {
-        document.body.style.backgroundColor = white;
-        document.body.style.colorScheme = "only light";
+      function applyLightTheme() {
+        document.documentElement.style.setProperty("background-color", WHITE, "important");
+        document.documentElement.style.setProperty("color-scheme", "light only", "important");
 
-        const wrap = document.querySelector(".wrap");
-        if (wrap) wrap.style.backgroundColor = white;
+        if (document.body) {
+          document.body.style.setProperty("background-color", WHITE, "important");
+          document.body.style.setProperty("color-scheme", "light only", "important");
+        }
 
-        document.querySelectorAll(
-          "section, .section, .calendar, .gallery, .parking-guide, .footer, .ending-photo, .account-wrap"
-        ).forEach(function(el) {
-          el.style.backgroundColor = white;
+        const selectors = [
+          ".wrap",
+          ".wrap > section",
+          ".section",
+          ".calendar",
+          ".gallery",
+          ".parking-guide",
+          ".ending-photo",
+          ".footer",
+          ".account-wrap"
+        ];
+
+        document.querySelectorAll(selectors.join(",")).forEach(function (el) {
+          el.style.setProperty("background-color", WHITE, "important");
         });
       }
 
+      applyLightTheme();
+
       if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", forceLight);
-      } else {
-        forceLight();
+        document.addEventListener("DOMContentLoaded", applyLightTheme, { once: true });
       }
+
+      window.addEventListener("pageshow", applyLightTheme);
+      window.addEventListener("orientationchange", applyLightTheme);
     })();
   </script>
 
