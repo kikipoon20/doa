@@ -998,6 +998,178 @@
     }
 
     
+  
+    /* =========================================================
+       SAMSUNG INTERNET / QR 인앱 브라우저 강제 다크모드 대응
+       background-color 대신 실제 흰색 이미지 레이어 사용
+       ========================================================= */
+
+    html,
+    body {
+      background-color: #ffffff !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2' viewBox='0 0 2 2'%3E%3Crect width='2' height='2' fill='%23ffffff'/%3E%3C/svg%3E") !important;
+      background-repeat: repeat !important;
+      background-size: 2px 2px !important;
+      color-scheme: only light !important;
+    }
+
+    body {
+      min-height: 100vh !important;
+    }
+
+    .wrap {
+      background-color: #ffffff !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2' viewBox='0 0 2 2'%3E%3Crect width='2' height='2' fill='%23ffffff'/%3E%3C/svg%3E") !important;
+      background-repeat: repeat !important;
+      background-size: 2px 2px !important;
+    }
+
+    /* 사진/검정 모달을 제외한 일반 청첩장 영역 */
+    .section,
+    .calendar,
+    .gallery,
+    .parking-guide,
+    .ending-photo,
+    .footer,
+    .account-wrap {
+      background-color: #ffffff !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2' viewBox='0 0 2 2'%3E%3Crect width='2' height='2' fill='%23ffffff'/%3E%3C/svg%3E") !important;
+      background-repeat: repeat !important;
+      background-size: 2px 2px !important;
+    }
+
+    /* 흰색 박스/버튼도 강제 다크 변환 방지 */
+    .calendar-box,
+    .account-toggle,
+    .account-list,
+    .account-item,
+    .copy-btn,
+    .copy-toast,
+    .parking-text,
+    .more-btn {
+      background-color: #ffffff !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2' viewBox='0 0 2 2'%3E%3Crect width='2' height='2' fill='%23ffffff'/%3E%3C/svg%3E") !important;
+      background-repeat: repeat !important;
+      background-size: 2px 2px !important;
+    }
+
+    /* 원래 디자인 컬러를 다시 명시 */
+    .title {
+      color: #8b6b58 !important;
+    }
+
+    .text {
+      color: #5f5149 !important;
+    }
+
+    .parents {
+      color: #6b5b52 !important;
+    }
+
+    .calendar-title,
+    .days {
+      color: #4a3b32 !important;
+    }
+
+    .day-name {
+      color: #b28b73 !important;
+    }
+
+    .dday {
+      background-image: none !important;
+      background-color: #b88b6a !important;
+      color: #ffffff !important;
+    }
+
+    .account-item,
+    .copy-btn {
+      color: #555555 !important;
+    }
+
+    .account-toggle.groom {
+      color: #6d9198 !important;
+    }
+
+    .account-toggle.bride {
+      color: #b4878c !important;
+    }
+
+    .account-name {
+      color: #6d9198 !important;
+    }
+
+    .bride-list .account-name {
+      color: #b4878c !important;
+    }
+
+    .parking-text {
+      color: #5d534b !important;
+    }
+
+    .footer {
+      color: #9b7b66 !important;
+    }
+
+    .more-btn {
+      color: #8b6b58 !important;
+      border-color: #d6c1b1 !important;
+    }
+
+    /* 컬러가 있는 기존 버튼은 원래 색 유지 */
+    .btn {
+      background-image: none !important;
+      background-color: #b88b6a !important;
+      color: #ffffff !important;
+    }
+
+    .btn.light {
+      background-image: none !important;
+      background-color: #e7d5c8 !important;
+      color: #5f4030 !important;
+    }
+
+    .info-box {
+      background-image: none !important;
+      background-color: #f8f0e8 !important;
+      color: #8b6b58 !important;
+    }
+
+    /* 메인사진/갤러리 확대/주차장 확대는 원래 디자인 유지 */
+    .main,
+    .intro-dark,
+    .gallery-modal,
+    .parking-modal {
+      background-image: none !important;
+    }
+
+    /* 삼성인터넷이 다크모드라고 인식해도 동일하게 유지 */
+    @media (prefers-color-scheme: dark) {
+      html,
+      body,
+      .wrap,
+      .section,
+      .calendar,
+      .gallery,
+      .parking-guide,
+      .ending-photo,
+      .footer,
+      .account-wrap,
+      .calendar-box,
+      .account-toggle,
+      .account-list,
+      .account-item,
+      .copy-btn,
+      .copy-toast,
+      .parking-text,
+      .more-btn {
+        background-color: #ffffff !important;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2' viewBox='0 0 2 2'%3E%3Crect width='2' height='2' fill='%23ffffff'/%3E%3C/svg%3E") !important;
+        background-repeat: repeat !important;
+        background-size: 2px 2px !important;
+        color-scheme: only light !important;
+      }
+    }
+
   </style>
 
   <script id="forceLightTheme">
@@ -1025,6 +1197,59 @@
       }
 
       window.addEventListener("pageshow", forceLightTheme);
+    })();
+  </script>
+
+
+  <script id="forceSamsungLightBackground">
+    (function () {
+      const whiteImage = 'url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2' viewBox='0 0 2 2'%3E%3Crect width='2' height='2' fill='%23ffffff'/%3E%3C/svg%3E")';
+
+      function forceWhiteBackground() {
+        const selectors = [
+          "html",
+          "body",
+          ".wrap",
+          ".section",
+          ".calendar",
+          ".gallery",
+          ".parking-guide",
+          ".ending-photo",
+          ".footer",
+          ".account-wrap",
+          ".calendar-box",
+          ".account-toggle",
+          ".account-list",
+          ".account-item",
+          ".copy-btn",
+          ".copy-toast",
+          ".parking-text",
+          ".more-btn"
+        ];
+
+        selectors.forEach(function(selector) {
+          document.querySelectorAll(selector).forEach(function(el) {
+            el.style.setProperty("background-color", "#ffffff", "important");
+            el.style.setProperty("background-image", whiteImage, "important");
+            el.style.setProperty("background-repeat", "repeat", "important");
+            el.style.setProperty("background-size", "2px 2px", "important");
+            el.style.setProperty("color-scheme", "only light", "important");
+          });
+        });
+
+        /* 원래 컬러 버튼은 흰 이미지 제거 */
+        document.querySelectorAll(".btn, .dday, .info-box").forEach(function(el) {
+          el.style.setProperty("background-image", "none", "important");
+        });
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", forceWhiteBackground);
+      } else {
+        forceWhiteBackground();
+      }
+
+      window.addEventListener("pageshow", forceWhiteBackground);
     })();
   </script>
 
