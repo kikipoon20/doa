@@ -3,14 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<!-- 모바일 라이트 테마 고정 -->
-  <meta name="color-scheme" content="only light">
-  <meta name="supported-color-schemes" content="light">
-  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: dark)">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<title>변은수♡이도아 결혼합니다.</title>
+
+  <!-- 다크모드에서도 흰색 배경 유지 -->
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#ffffff">
+  
+  <title>변은수♡이도아 결혼합니다.</title>
 
   <!-- 링크 미리보기 -->
   <meta property="og:title" content="변은수♡이도아 결혼합니다.">
@@ -26,34 +24,26 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,300,0,0" rel="stylesheet">
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+     }
 
-    :root {
-      color-scheme: only light !important;
-      background-color: #ffffff !important;
-    }
-
-    html,
-    body {
-      width: 100%;
-      min-height: 100%;
-      margin: 0;
-      padding: 0;
-      background-color: #ffffff !important;
-      color-scheme: only light !important;
-      -webkit-text-size-adjust: 100%;
-    }
+   html {
+    width: 100%;
+    min-height: 100%;
+    background: #ffffff !important;
+    color-scheme: light;
+   }
 
     body {
-      min-height: 100vh;
-      font-family: "Noto Serif KR", serif;
-      color: #4a3b32 !important;
-      line-height: 1.8;
-      -webkit-font-smoothing: antialiased;
+     width: 100%;
+     min-height: 100vh;
+     background: #ffffff !important;
+     font-family: "Noto Serif KR", serif;
+     color: #4a3b32;
+     line-height: 1.8;
+     color-scheme: light;
     }
 
     .wrap {
@@ -61,81 +51,13 @@
       max-width: 430px;
       min-height: 100vh;
       margin: 0 auto;
-      background-color: #ffffff !important;
+      background: #ffffff !important;
       overflow: hidden;
     }
 
-    /* 기본 콘텐츠 배경을 모두 흰색으로 고정 */
-    .wrap,
-    .wrap > section,
-    .section,
-    .calendar,
-    .gallery,
-    .parking-guide,
-    .ending-photo,
-    .footer,
-    .account-wrap {
-      background-color: #ffffff !important;
-    }
-
-    /* OS 다크모드여도 페이지는 라이트 모드 유지 */
-    @media (prefers-color-scheme: dark) {
-      :root,
-      html,
-      body,
-      .wrap,
-      .wrap > section,
-      .section,
-      .calendar,
-      .gallery,
-      .parking-guide,
-      .ending-photo,
-      .footer,
-      .account-wrap {
-        background-color: #ffffff !important;
-        color-scheme: only light !important;
-      }
-
-      body {
-        color: #4a3b32 !important;
-      }
-
-      .title { color: #8b6b58 !important; }
-      .text { color: #5f5149 !important; }
-      .parents { color: #6b5b52 !important; }
-
-      .calendar-box,
-      .gallery-modal,
-      .account-toggle,
-      .account-list,
-      .account-item,
-      .copy-btn,
-      .copy-toast,
-      .parking-text {
-        background-color: #ffffff !important;
-      }
-
-      .calendar-box,
-      .account-item,
-      .copy-btn,
-      .copy-toast,
-      .parking-text {
-        color: #555555 !important;
-      }
-    }
-
-    /* 폼 요소 자동 다크 스타일 방지 */
-    button,
-    input,
-    textarea,
-    select {
-      color-scheme: only light !important;
-    }
-
-.section {
+    .section {
       padding: 70px 28px;
       text-align: center;
-      background-color: #ffffff !important;
     }
 
     .main {
@@ -380,7 +302,7 @@
     .calendar { background: #ffffff; }
 
     .calendar-box {
-      background-color: #ffffff !important;
+      background: #fff;
       padding: 25px;
       border-radius: 18px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.2);
@@ -477,7 +399,7 @@
       margin-top: 25px;
       padding: 10px 36px;
       border: 1px solid #d6c1b1;
-      background-color: #ffffff;
+      background: transparent;
       color: #8b6b58;
       border-radius: 30px;
       font-size: 14px;
@@ -489,7 +411,7 @@
       display: none;
       position: fixed;
       inset: 0;
-      background-color: #ffffff !important;
+      background: #fff;
       z-index: 9999;
       align-items: center;
       justify-content: center;
@@ -574,7 +496,7 @@
       height: 44px;
       border: 1px solid #ddd;
       border-radius: 6px;
-      background-color: #ffffff !important;
+      background: #fff;
       padding: 0 18px;
       display: flex;
       justify-content: space-between;
@@ -595,7 +517,7 @@
       display: none;
       border: 1px solid #ddd;
       border-top: none;
-      background-color: #ffffff !important;
+      background: #fff;
       border-radius: 0 0 6px 6px;
       overflow: hidden;
     }
@@ -640,7 +562,7 @@
 
     .copy-btn {
       border: 1px solid #ddd;
-      background-color: #ffffff !important;
+      background: #fff;
       border-radius: 4px;
       padding: 4px 12px;
       cursor: pointer;
@@ -664,7 +586,7 @@
       transform: translateX(-50%) translateY(20px);
       width: calc(100% - 40px);
       max-width: 390px;
-      background-color: #ffffff !important;
+      background: #fff;
       color: #333;
       padding: 16px 18px;
       border-radius: 10px;
@@ -999,32 +921,14 @@
 
     
   
-    /* =========================================================
-       SAMSUNG INTERNET / QR 인앱 브라우저 강제 다크모드 대응
-       background-color 대신 실제 흰색 이미지 레이어 사용
-       ========================================================= */
+    /* ===== 모바일 다크모드 대응: 배경만 흰색 고정 ===== */
+    :root {
+      color-scheme: only light;
+    }
 
     html,
-    body {
-      background-color: #ffffff !important;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2' viewBox='0 0 2 2'%3E%3Crect width='2' height='2' fill='%23ffffff'/%3E%3C/svg%3E") !important;
-      background-repeat: repeat !important;
-      background-size: 2px 2px !important;
-      color-scheme: only light !important;
-    }
-
-    body {
-      min-height: 100vh !important;
-    }
-
-    .wrap {
-      background-color: #ffffff !important;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2' viewBox='0 0 2 2'%3E%3Crect width='2' height='2' fill='%23ffffff'/%3E%3C/svg%3E") !important;
-      background-repeat: repeat !important;
-      background-size: 2px 2px !important;
-    }
-
-    /* 사진/검정 모달을 제외한 일반 청첩장 영역 */
+    body,
+    .wrap,
     .section,
     .calendar,
     .gallery,
@@ -1033,55 +937,11 @@
     .footer,
     .account-wrap {
       background-color: #ffffff !important;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2' viewBox='0 0 2 2'%3E%3Crect width='2' height='2' fill='%23ffffff'/%3E%3C/svg%3E") !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2'%3E%3Crect width='2' height='2' fill='%23ffffff'/%3E%3C/svg%3E") !important;
       background-repeat: repeat !important;
       background-size: 2px 2px !important;
     }
 
-    /* 흰색 박스/버튼도 강제 다크 변환 방지 */
-    .calendar-box,
-    .account-toggle,
-    .account-list,
-    .account-item,
-    .copy-btn,
-    .copy-toast,
-    .parking-text,
-    .more-btn {
-      background-color: #ffffff !important;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2' viewBox='0 0 2 2'%3E%3Crect width='2' height='2' fill='%23ffffff'/%3E%3C/svg%3E") !important;
-      background-repeat: repeat !important;
-      background-size: 2px 2px !important;
-    }
-.dday {
-      background-image: none !important;
-      background-color: #b88b6a !important;}
-.more-btn {}
-
-    /* 컬러가 있는 기존 버튼은 원래 색 유지 */
-    .btn {
-      background-image: none !important;
-      background-color: #ffffff !important;
-    }
-
-    .btn.light {
-      background-image: none !important;
-      background-color: #5f4030 !important;
-    }
-
-    .info-box {
-      background-image: none !important;
-      background-color: #8b6b58 !important;
-    }
-
-    /* 메인사진/갤러리 확대/주차장 확대는 원래 디자인 유지 */
-    .main,
-    .intro-dark,
-    .gallery-modal,
-    .parking-modal {
-      background-image: none !important;
-    }
-
-    /* 삼성인터넷이 다크모드라고 인식해도 동일하게 유지 */
     @media (prefers-color-scheme: dark) {
       html,
       body,
@@ -1092,106 +952,15 @@
       .parking-guide,
       .ending-photo,
       .footer,
-      .account-wrap,
-      .calendar-box,
-      .account-toggle,
-      .account-list,
-      .account-item,
-      .copy-btn,
-      .copy-toast,
-      .parking-text,
-      .more-btn {
+      .account-wrap {
         background-color: #ffffff !important;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2' viewBox='0 0 2 2'%3E%3Crect width='2' height='2' fill='%23ffffff'/%3E%3C/svg%3E") !important;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2'%3E%3Crect width='2' height='2' fill='%23ffffff'/%3E%3C/svg%3E") !important;
         background-repeat: repeat !important;
         background-size: 2px 2px !important;
-        color-scheme: only light !important;
       }
     }
 
   </style>
-
-  <script id="forceLightTheme">
-    (function () {
-      function forceLightTheme() {
-        document.documentElement.style.setProperty("background-color", "#ffffff", "important");
-        document.documentElement.style.setProperty("color-scheme", "only light", "important");
-
-        if (document.body) {
-          document.body.style.setProperty("background-color", "#ffffff", "important");
-          document.body.style.setProperty("color-scheme", "only light", "important");
-        }
-
-        document.querySelectorAll(
-          ".wrap, .wrap > section, .section, .calendar, .gallery, .parking-guide, .ending-photo, .footer, .account-wrap"
-        ).forEach(function (el) {
-          el.style.setProperty("background-color", "#ffffff", "important");
-        });
-      }
-
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", forceLightTheme, { once: true });
-      } else {
-        forceLightTheme();
-      }
-
-      window.addEventListener("pageshow", forceLightTheme);
-    })();
-  </script>
-
-
-  <script id="forceSamsungLightBackground">
-    (function () {
-      const whiteImage = 'url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2' viewBox='0 0 2 2'%3E%3Crect width='2' height='2' fill='%23ffffff'/%3E%3C/svg%3E")';
-
-      function forceWhiteBackground() {
-        const selectors = [
-          "html",
-          "body",
-          ".wrap",
-          ".section",
-          ".calendar",
-          ".gallery",
-          ".parking-guide",
-          ".ending-photo",
-          ".footer",
-          ".account-wrap",
-          ".calendar-box",
-          ".account-toggle",
-          ".account-list",
-          ".account-item",
-          ".copy-btn",
-          ".copy-toast",
-          ".parking-text",
-          ".more-btn"
-        ];
-
-        selectors.forEach(function(selector) {
-          document.querySelectorAll(selector).forEach(function(el) {
-            el.style.setProperty("background-color", "#ffffff", "important");
-            el.style.setProperty("background-image", whiteImage, "important");
-            el.style.setProperty("background-repeat", "repeat", "important");
-            el.style.setProperty("background-size", "2px 2px", "important");
-            el.style.setProperty("color-scheme", "only light", "important");
-          });
-        });
-
-        /* 원래 컬러 버튼은 흰 이미지 제거 */
-        document.querySelectorAll(".btn, .dday, .info-box").forEach(function(el) {
-          el.style.setProperty("background-image", "none", "important");
-        });
-      }
-
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", forceWhiteBackground);
-      } else {
-        forceWhiteBackground();
-      }
-
-      window.addEventListener("pageshow", forceWhiteBackground);
-    })();
-  </script>
-
 </head>
 
 <body>
