@@ -921,9 +921,13 @@
 
     
   
-    /* ===== 모바일 다크모드 대응: 배경만 흰색 고정 ===== */
+    /* =========================================================
+       모바일 다크모드에서도 원본 사이트 색상 그대로 유지
+       레이아웃/기능은 변경하지 않음
+       ========================================================= */
+
     :root {
-      color-scheme: only light;
+      color-scheme: only light !important;
     }
 
     html,
@@ -942,21 +946,212 @@
       background-size: 2px 2px !important;
     }
 
+    /* 기본 글자색 */
+    body {
+      color: #4a3b32 !important;
+      -webkit-text-fill-color: #4a3b32 !important;
+    }
+
+    /* 메인 사진 위 글자는 원래대로 흰색 */
+    .main-text,
+    .main-text *,
+    .music-popup,
+    .music-popup * {
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
+    }
+
+    /* 섹션 제목 */
+    .title,
+    .parking-title {
+      color: #8b6b58 !important;
+      -webkit-text-fill-color: #8b6b58 !important;
+    }
+
+    /* 본문 */
+    .text {
+      color: #5f5149 !important;
+      -webkit-text-fill-color: #5f5149 !important;
+    }
+
+    .parents {
+      color: #6b5b52 !important;
+      -webkit-text-fill-color: #6b5b52 !important;
+    }
+
+    .account-desc,
+    .footer {
+      color: #9b7b66 !important;
+      -webkit-text-fill-color: #9b7b66 !important;
+    }
+
+    /* 달력 */
+    .calendar-box {
+      background-color: #ffffff !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2'%3E%3Crect width='2' height='2' fill='%23ffffff'/%3E%3C/svg%3E") !important;
+    }
+
+    .calendar-title,
+    .days div {
+      color: #4a3b32 !important;
+      -webkit-text-fill-color: #4a3b32 !important;
+    }
+
+    .day-name {
+      color: #b28b73 !important;
+      -webkit-text-fill-color: #b28b73 !important;
+    }
+
+    .dday {
+      background-color: #b88b6a !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2'%3E%3Crect width='2' height='2' fill='%23b88b6a'/%3E%3C/svg%3E") !important;
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
+    }
+
+    /* 갤러리 더보기 */
+    .more-btn {
+      background-color: transparent !important;
+      background-image: none !important;
+      color: #8b6b58 !important;
+      -webkit-text-fill-color: #8b6b58 !important;
+      border-color: #d6c1b1 !important;
+    }
+
+    /* 위치 정보 박스 */
+    .info-box {
+      background-color: #f8f0e8 !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2'%3E%3Crect width='2' height='2' fill='%23f8f0e8'/%3E%3C/svg%3E") !important;
+      color: #8b6b58 !important;
+      -webkit-text-fill-color: #8b6b58 !important;
+    }
+
+    /* 지도 버튼 */
+    .btn {
+      background-color: #b88b6a !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2'%3E%3Crect width='2' height='2' fill='%23b88b6a'/%3E%3C/svg%3E") !important;
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
+    }
+
+    .btn.light {
+      background-color: #e7d5c8 !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2'%3E%3Crect width='2' height='2' fill='%23e7d5c8'/%3E%3C/svg%3E") !important;
+      color: #5f4030 !important;
+      -webkit-text-fill-color: #5f4030 !important;
+    }
+
+    /* 계좌 영역 */
+    .account-toggle,
+    .account-list,
+    .account-item,
+    .copy-btn {
+      background-color: #ffffff !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2'%3E%3Crect width='2' height='2' fill='%23ffffff'/%3E%3C/svg%3E") !important;
+    }
+
+    .account-item {
+      color: #555555 !important;
+      -webkit-text-fill-color: #555555 !important;
+      border-color: #eeeeee !important;
+    }
+
+    .account-toggle.groom,
+    .account-name {
+      color: #6d9198 !important;
+      -webkit-text-fill-color: #6d9198 !important;
+    }
+
+    .account-toggle.bride,
+    .bride-list .account-name {
+      color: #b4878c !important;
+      -webkit-text-fill-color: #b4878c !important;
+    }
+
+    .copy-btn {
+      color: #555555 !important;
+      -webkit-text-fill-color: #555555 !important;
+      border-color: #dddddd !important;
+    }
+
+    .pay-btn {
+      background-color: #ffe812 !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2'%3E%3Crect width='2' height='2' fill='%23ffe812'/%3E%3C/svg%3E") !important;
+      color: #000000 !important;
+      -webkit-text-fill-color: #000000 !important;
+    }
+
+    /* 복사 팝업 */
+    .copy-toast {
+      background-color: #ffffff !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2'%3E%3Crect width='2' height='2' fill='%23ffffff'/%3E%3C/svg%3E") !important;
+      color: #333333 !important;
+      -webkit-text-fill-color: #333333 !important;
+    }
+
+    .copy-toast::before {
+      background-color: #222222 !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2'%3E%3Crect width='2' height='2' fill='%23222222'/%3E%3C/svg%3E") !important;
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
+    }
+
+    /* 주차 안내 */
+    .parking-text {
+      background-color: #ffffff !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2'%3E%3Crect width='2' height='2' fill='%23ffffff'/%3E%3C/svg%3E") !important;
+      color: #5d534b !important;
+      -webkit-text-fill-color: #5d534b !important;
+      border-color: #e7d5c8 !important;
+    }
+
+    .parking-small {
+      color: #b94a48 !important;
+      -webkit-text-fill-color: #b94a48 !important;
+    }
+
+    /* 퀵메뉴 아이콘 */
+    .float-btn .material-symbols-rounded {
+      color: #5f4030 !important;
+      -webkit-text-fill-color: #5f4030 !important;
+    }
+
+    .music-btn .material-symbols-rounded {
+      color: rgba(90,90,90,0.9) !important;
+      -webkit-text-fill-color: rgba(90,90,90,0.9) !important;
+    }
+
+    /* 갤러리 확대 화면은 원래 흰색 */
+    .gallery-modal {
+      background-color: #ffffff !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2'%3E%3Crect width='2' height='2' fill='%23ffffff'/%3E%3C/svg%3E") !important;
+    }
+
+    .close-btn {
+      color: #aaaaaa !important;
+      -webkit-text-fill-color: #aaaaaa !important;
+    }
+
+    .arrow {
+      color: #dddddd !important;
+      -webkit-text-fill-color: #dddddd !important;
+    }
+
+    .photo-count {
+      color: #aaaaaa !important;
+      -webkit-text-fill-color: #aaaaaa !important;
+    }
+
+    /* 주차 확대 모달/메인 사진 영역은 기존 검정 연출 유지 */
+    .main,
+    .intro-dark,
+    .parking-modal {
+      background-image: none !important;
+    }
+
     @media (prefers-color-scheme: dark) {
-      html,
-      body,
-      .wrap,
-      .section,
-      .calendar,
-      .gallery,
-      .parking-guide,
-      .ending-photo,
-      .footer,
-      .account-wrap {
-        background-color: #ffffff !important;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2'%3E%3Crect width='2' height='2' fill='%23ffffff'/%3E%3C/svg%3E") !important;
-        background-repeat: repeat !important;
-        background-size: 2px 2px !important;
+      :root {
+        color-scheme: only light !important;
       }
     }
 
